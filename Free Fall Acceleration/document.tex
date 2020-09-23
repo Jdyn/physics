@@ -1,0 +1,201 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage{pgfplots}
+\usepackage[utf8]{inputenc}
+\usepackage{siunitx}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{pgf}
+\usepackage{pstricks-add}
+\usepackage{pgfplotstable}
+\usepackage{filecontents}
+\usepackage{pgfplotstable}
+\usetikzlibrary{angles,quotes}
+\usetikzlibrary{calc}
+\pgfplotsset{compat=1.5}
+
+\begin{document}
+\sisetup{per-mode=symbol}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        \textbf{Free Fall Acceleration}
+
+        \vspace{0.5cm}
+        Lab: 03
+
+        \vspace{1cm}
+
+        \textbf{Jaden Moore}
+
+        \vfill
+
+        Orange Coast College\\
+        Physics A185L\\
+        September 19th, 2020
+
+    \end{center}
+\end{titlepage}
+
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\lhead{Free Fall Acceleration}
+\rhead{Lab: 03}
+\cfoot{\thepage}
+
+\begin{filecontents}{data1.csv}
+    T      Y
+    0.00   5.58
+    0.10   5.54
+    0.20   5.38
+    0.30   5.12
+    0.40   4.76
+    0.50   4.34
+    0.60   3.80
+    0.70   3.14
+    0.80   2.40
+    0.90   1.58
+    1.00   0.66
+    };
+\end{filecontents}
+
+\begin{filecontents}{data2.csv}
+    T      Y
+    0.00   5.58
+    0.01   5.54
+    0.04   5.38
+    0.09   5.12
+    0.16   4.76
+    0.25   4.34
+    0.36   3.80
+    0.49   3.14
+    0.64   2.40
+    0.81   1.58
+    1.00   0.66
+    };
+\end{filecontents}
+
+\section{Introduction}
+Despite there potentially being a multitude of differnet forces acting on a single particle during the course of some natural phenomena, it is often valuable to explore how these forces act in isolation to gain a better understanding of their function. Consider an object thrown from a building, whose forces acting upon it could be that of the initial throwing force, air friction, and gravity.
+
+In this lab, we will discuss in isolation, the impact that gravity has on the acceleration of an object near earth's surface over time. This is often represented as \textbf{Free Fall}. Free fall is described as an object in motion whose only force acting upon it is gravity. Gravity can be represented as a vector quantity with, when close to the earth, a magnitude of \SI{9.8}{\metre\per\second\squared} in the direction of the center of the earth.
+
+\section{Gravitational Acceleration}
+In general, it can be said that gravity accelerates objects toward the center of the earth, or "downward". This implies that when the only force acting on an object is gravity, or when an object is in free fall, the acceleration of the object must be equal to the downward magnitude of the gravity vector.
+
+Consider an object suspended in mid-air and at t=0, the object begins moving due to the force of gravity. This is depicted by the following table:
+
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1}
+
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{ |p{3cm}|p{3cm}|p{3cm}| }
+        \hline
+        \multicolumn{3}{|c|}{Table 1: The position of an object affected by gravity over time} \\
+        \hline
+        time (s) & time (s$^2$) & y-position (m)                           \\
+        \hline
+        0.00     & 0.00         & 5.58                                     \\
+        0.10     & 0.01         & 5.54                                     \\
+        0.20     & 0.04         & 5.38                                     \\
+        0.30     & 0.09         & 5.12                                     \\
+        0.40     & 0.16         & 4.76                                     \\
+        0.50     & 0.25         & 4.34                                     \\
+        0.60     & 0.36         & 3.80                                     \\
+        0.70     & 0.49         & 3.14                                     \\
+        0.80     & 0.64         & 2.40                                     \\
+        0.90     & 0.81         & 1.58                                     \\
+        1.00     & 1.00         & 0.66                                     \\
+        \hline
+    \end{tabular}
+\end{figure}
+
+A preliminary analysis of the table indicates that as time increases, the difference in the y-position of the object gets increasingly larger after each consecutive moment in time which indicates that the object is accelerating. From this data, we can generate an experimental value for the acceleration of the object and determine whether it is consistent with the theoretical acceleration of gravity which would also allow us to determine whether or not the object is truly in free fall.
+
+One approach to finding the experimental acceleration of this object would be to use a quadratic regression model to find the line of best fit.
+
+\begin{figure}[H]
+    \centering
+
+    \caption[10pt]{A quadratic regression model generated from Table 1}
+
+    \begin{tikzpicture}
+        \pgfplotsset{width=10cm,
+        legend style={font=\footnotesize}}
+        \begin{axis}[
+        xlabel={time $(s)$},
+        xmin =0,
+        xtick={0.00, 0.20, 0.40, 0.60, 0.80, 1.00, 1.20},
+        ylabel={y-position $(m)$},
+        ymin =0,
+        ytick = {6,5,4,3,2,1},
+        yticklabel=\pgfmathprintnumber{\tick},
+        scaled y ticks=base 10:0,
+        legend cell align = left,
+        legend pos = north east]
+        \addplot[only marks] table[x=T,y=Y]{data1.csv};
+        \addplot[black, smooth] {-4.83217*x^2 - 0.1042*x + 5.588811};
+        \addlegendimage{only marks}
+        \addlegendentry{y-position over time}
+        \addlegendimage{no markers, red}
+        \addlegendentry{quadratic regression}
+    \end{axis}
+    \end{tikzpicture}
+
+\end{figure}
+The equation of the line formed by the quadratic fit is:
+
+\[ y=-4.832 \pm \SI{0.038}{\metre\per\second\squared}-0.104 \pm \SI{0.04}{\metre\per\second}+5.589 \pm \SI{5.589}{\metre}\]
+
+In this case, the acceleration of the object using the equation aquired from the quadratic regression line is equal to -9.664 $\pm$ $\SI{0.076}{\metre\per\second\squared}$. This indicates that the experimental acceleration of the object using the quadratic regression line is between $\SI{-9.588}{\metre\per\second\squared}$ and $\SI{-9.741}{\metre\per\second\squared}$. This method a margin of error of $1.4\%$ relative to the theoretical acceleration of gravity measured at $\SI{-9.8}{\metre\per\second\squared}$
+
+\paragraph{}
+
+Another method for calculating the experimental acceleration of the object presented in Table 1 is to present the data as a function of time squared and then use a linear regression model.
+
+\begin{figure}[H]
+    \centering
+
+    \caption[10pt]{A linear regression model generated from Table 1}
+
+    \begin{tikzpicture}
+        \pgfplotsset{width=10cm,
+        legend style={font=\footnotesize}}
+        \begin{axis}[
+        xlabel={time $(s^2)$},
+        xmin =0,
+        xtick={0.00, 0.20, 0.40, 0.60, 0.80, 1.00, 1.20},
+        ylabel={y-position $(m)$},
+        ymin =0,
+        ytick = {6,5,4,3,2,1},
+        yticklabel=\pgfmathprintnumber{\tick},
+        scaled y ticks=base 10:0,
+        legend cell align = left,
+        legend pos = north east]
+        \addplot[only marks] table[x=T,y=Y]{data2.csv};
+        \addplot[black, smooth] {-4.92882*x + 5.570543};
+        \addlegendimage{only marks}
+        \addlegendentry{y-position over time}
+        \addlegendimage{no markers, red}
+        \addlegendentry{linear regression}
+    \end{axis}
+    \end{tikzpicture}
+
+\end{figure}
+
+The equation of the line formed by the linear fit is:
+\[y= -4.929 \pm \SI{0.013}{\metre\per\second} + 5.570 \pm \SI{0.006}{\metre}\]
+The acceleration of the object using the equation of the linear regression model equates to -9.858 $\pm$ $\SI{0.026}{\metre\per\second\squared}$. This means that, using the linear fit, the acceleration of the object is estimated to be between $\SI{-9.831}{\metre\per\second\squared}$ and $\SI{-9.884}{\metre\per\second\squared}$. This method produces a $0.6\%$ margin of error relative to the theoretical value of $\SI{-9.8}{\metre\per\second\squared}$.
+
+Using the linear regression model, the theoretical value of gravity is within the range of the experimental acceleration of the object. This indicates that the linear fit is more precise than the quadratic fit.
+
+\section{Conclusion}
+
+In this case, the linear fit yielded a much lower percent error relative to the quadratic fit. The linear fit had a $0.6\%$ error while the quadratic fit had a $1.6\%$ error. This indicates that the linear model was much more accurate relative to the quadratic fit. Furthermore, when taking into account the measured error of the acceleration, it was found that the results from both methods were not consistent with each other. That is, there was no range of values that both methods agreed could be the potential acceleration. The linear fit simply produced a range that was much closer to the theoretical value of gravity.
+\end{document}
