@@ -1,0 +1,181 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[english]{babel}
+\usepackage{pgfplots}
+\usepackage[utf8]{inputenc}
+\usepackage{siunitx}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{pgf}
+\usepackage{pstricks-add}
+\usepackage{pgfplotstable}
+\usepackage{filecontents}
+\usepackage{pgfplotstable}
+\usetikzlibrary{angles,quotes}
+\usetikzlibrary{calc}
+\pgfplotsset{compat=1.5}
+
+\begin{document}
+\sisetup{per-mode=symbol}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        \textbf{Free Fall in Two Dimensions}
+
+        \vspace{0.5cm}
+        Lab: 04
+
+        \vspace{1cm}
+
+        \textbf{Jaden Moore}
+
+        \vfill
+
+        Orange Coast College\\
+        Physics A185L\\
+        September 26th, 2020
+
+    \end{center}
+\end{titlepage}
+
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\lhead{Free Fall in Two Dimensions}
+\rhead{Lab: 04}
+\cfoot{\thepage}
+
+% \begin{filecontents}{data1.csv}
+%     A      Y
+%     20.0   26.3
+%     30.0   35.4
+%     40.0   40.5
+%     45.0   41.1
+%     50.0   40.4
+%     60.0   35.4
+%     70.0   26.3
+%     };
+% \end{filecontents}
+
+% \begin{filecontents}{data2.csv}
+%     A      Y
+%     30.0   35.8
+%     40.0   37.8
+%     45.0   37.6
+%     50.0   36.4
+%     60.0   31.4
+%     };
+% \end{filecontents}
+
+\section{Introduction}
+It is often necessary to calculate the distance a projectile can travel under specific circumstances. Consider a projectile that is not affected by air resistence, that is, the moment the object becomes a projectile, it can be assumed that it is now in free-fall where the only force acting on it is gravity. Theoretically, the projectile should land in the same position every time, but when we attempt to measure the distance travelled, we may measure slightly different results every time.
+
+In this lab, we will discuss methods of calculating the  horizontal range of a projectile in free fall and the margin of error associated with it's measurement. Futhermore, we will attempt to calculate a precise angle, based on a quadratic regression of our data, that will yield the greatest horizontal range of the projectile.
+
+\section{Range Of Free-Fall Projectiles}
+The range of a projectile can of course be measured in the traditional sense, perhaps by taking a very long tape measure starting at the initial position of the projectile and measuring to the point where the projectile reached the ground again. If we were to ignore air resistence, there would be a good argument for that projectile landing at that position every time. However when we attempt to measure the distance with our tape measure, we yeild a slightly different distance every time. This is because there exists some margin of error when utilizing the tape measure, as the limitations of physical instruments must be taken into account.
+
+Below we have put into a table, the data collected from a projectile being launched at different angles with the same initial velocity. It also displays our measured range $R_\text{exp}$ and the theoretical range $R_\text{theory}$ calculated by the following equation:
+
+\[R_\text{theory} = \frac{V_0^2sin(2 \theta_0)}{2g} \left[1+\sqrt{\frac{2gh}{V_0^2sin^2(2 \theta_0)}} \right]\]
+
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.4}
+
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{ p{2cm}p{2cm}p{2cm}p{2cm}p{2cm} }
+        \hline
+        \multicolumn{5}{c}{Table 1: The data of a free fall projectile} \\
+        \hline
+        $V_0$ (m/s) & $\theta_0$ (degree) & $R_\text{exp}$ (m) & $R_\text{theory}$ (m) & $\%$ error \\
+        \hline
+        20 & 20 & 26.3 & 26.234 & 0.243 \\
+        20 & 30 & 35.4 & 35.348 & 0.147 \\
+        20 & 40 & 40.5 & 40.196 & 0.756 \\
+        20 & 45 & 41.1 & 40.816 & 0.695 \\
+        20 & 50 & 40.4 & 40.196 & 0.507 \\
+        20 & 60 & 35.4 & 35.348 & 0.147 \\
+        20 & 70 & 26.3 & 26.236 & 0.243 \\
+        \hline
+    \end{tabular}
+\end{figure}
+
+In this case, our measured range of the projectile maintains a slight margin of error with respect to the theoretical range. This indicates there is some consistent level of inaccuracy associated with the device used to measure the range. this is known as the margin of error, or "percent error" and is useful in determining the potential inaccuracy of the measurement.
+
+In each case, I measured the percent error relative to the theoreitcal range and found there to be a larger discrepency in the percent error as the angle of the projectile got closer to the angle which produces the greatest range. That is, there was a larger percent error between the experimental range $R_\text{exp}$ and theoretical range $R_\text{theory}$ as the angle got closer to $\theta_\text{max}$, the angle the produces the max range. This allows us to conclude that the angle $\theta_\text{max}$ for this projectile must lie between $40^\circ$ and $50^\circ$. We can prove this by creating a quadratic regression from the data. In this case, the equation of the regression line is:
+
+\[ y=-0.024 \pm \SI{0.000}{\metre\per\theta\squared}+2.1219 \pm \SI{0.029}{\metre\per\theta}-6.7842\pm \SI{0.610}{\metre}\]
+
+From this, we can extrapolate the maximum range of the projectile by calculating the relative maxima of the derivative of the function. in this case, we get the maximum range of the projectile to be $\SI{40.911}{\metre}$ and the angle $\theta_\text{max}$ to be $42.30^\circ$.
+
+Earlier we said that the angle $\theta_\text{max}$ must lie between $40^\circ$ and $50^\circ$ which is consistent with our results from the quadratic regression.
+
+\paragraph{}
+
+We can experiment with this idea further and consider a scenario where the projectile is launched 5 meters above the landing position. The following table depicts this projectile launched from varying angles:
+
+\begin{figure}[H]
+    \centering
+    \begin{tabular}{ p{2cm}p{2cm}p{2cm}p{2cm}p{2cm} }
+        \hline
+        \multicolumn{5}{c}{Table 2: The data of a free fall projectile where $h_0=5m$} \\
+        \hline
+        $V_0$ (m/s) & $\theta_0$ (degree) & $R_\text{exp}$ (m) & $R_\text{theory}$ (m) & $\%$ error \\
+        \hline
+        18 & 30 & 35.8 & 35.598 & 0.569 \\
+        18 & 40 & 37.8 & 37.705 & 0.253 \\
+        18 & 45 & 37.6 & 37.473 & 0.340 \\
+        18 & 50 & 36.4 & 36.320 & 0.220 \\
+        18 & 60 & 31.4 & 31.275 & 0.401 \\
+        \hline
+    \end{tabular}
+\end{figure}
+
+In this case, the percent error of the experimental range relative to the theoretical range \textbf{decreased} as the angle of the projectile got further from $\theta_\text{max}$. This contrasts the results found in the first case where the percent error increased as the projectile angle got closer to $\theta_\text{max}$.
+
+We can apply a quadratic regression to get a better understanding of how the range of the projectile changes as its angle changes. From a quadratic regression, we get the following equation:
+
+% \begin{figure}[H]
+%     \centering
+
+%     \caption[10pt]{A quadratic regression model generated from Table 1}
+
+%     \begin{tikzpicture}[scale=1pt]
+%         \pgfplotsset{width=7cm,
+%         legend style={font=\footnotesize}}
+%         \begin{axis}[
+%         xlabel={angle $(degree)$},
+%         xmin=20,
+%         xmax=70,
+%         ylabel={range $(m)$},
+%         ymin=20,
+%         ymax=45,
+%         yticklabel=\pgfmathprintnumber{\tick},
+%         legend cell align = left,
+%         legend pos = south west
+%         ]
+%         \addplot[only marks] table[x=A,y=Y]{data2.csv};
+%         \addplot[black,smooth,domain=30:60] {-0.01762*x^2 + 1.439714*x + 8.453333};
+%         \addlegendimage{only marks}
+%         \addlegendentry{y-position over time}
+%         \addlegendimage{no markers, red}
+%         \addlegendentry{quadratic regression}
+%     \end{axis}
+%     \end{tikzpicture}
+% \end{figure}
+
+\[ y=-0.018 \pm \SI{0.000}{\metre\per\theta\squared}+1.440 \pm \SI{0.019}{\metre\per\theta}+8.453 \pm \SI{0.405}{\metre}\]
+
+From this, we can apply the same method of retreiving the maximum range of the projectile as we did in the first case. A preliminary analysis of Table 2 indicates again that something is happening between the angles of $40^\circ$ and $50^\circ$. But this time the percent error is decreasing as it enters this range rather than increasing like it was in Table 1. After extrapolating the projected maximum range of the projectile, we get the maximum range of the projectile to be $\SI{37.896}{\metre}$ and the angle  which produces this range to be $42.82^\circ$.
+
+It appears that increasing the initial height of the projectile caused the percent error to decrease as the angle $\theta $ reached $\theta_\text{max}$. The angle $\theta_\text{max}$ for Table 2 was again found to be between $40^\circ$ and $50^\circ$.
+\section{Conclusion}
+It appears that there becomes a higher degree of uncertainty when the speed at which the range of the projectile goes from increasing to decreasing changes. For example, if the range goes from increasing to decreasing very quickly, then the percent error increases quickly. This type of change in the range occurs when the angle reaches $\theta_\text{max}$. In addition, When a large change occurred in the range between two relatively close angles, the percent error increased dramatically.
+
+Furthermore, despite the projectiles in both tables starting at different initial positions, they both reached a very simiar $\theta_\text{max}$. If the projectile in Table 2 was launched at the same velocity as the projectile in Table 1, perhaps this type of comparison would have been more useful. In addition, in the case where the projectile started at a higher position, the change in the range between the recorded angles was significantly smaller. This indicates that the projectile in case 2 achieved a maximum range a lot sooner than the projectile in case 1 where it started at the same height as its landing height.
+\end{document}
