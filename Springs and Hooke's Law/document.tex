@@ -1,0 +1,129 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[margin=1in]{geometry}
+\usepackage{pgfplots}
+\usepackage[utf8]{inputenc}
+\usepackage{siunitx}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{pgf}
+\usepackage{pstricks-add}
+\usepackage{pgfplotstable}
+\usepackage{filecontents}
+\usepackage{pgfplotstable}
+\usetikzlibrary{angles,quotes}
+\usetikzlibrary{calc}
+\pgfplotsset{compat=1.5}
+
+\begin{filecontents}{data1.csv}
+        X            F
+    0.4265205	-2.05017061
+    0.434581	-2.334667446
+    0.445557	-2.425559702
+    0.4594485	-2.529087204
+    0.475055	-2.677857039
+    0.4913475	-3.014117626
+    0.507983	-3.143730798
+    0.5242755	-3.253779718
+    0.5393675	-3.376871472
+    0.5520585	-3.538684142
+    0.5623485	-3.732696311
+    0.5695515	-3.726174894
+    0.5740105	-3.732696311
+    0.5740105	-3.713132059
+    0.574182	-3.719653477
+    0.574182	-3.739217729
+    0.574182	-3.719653477
+    0.574182	-3.732696311
+    0.5743535	-3.706610642
+    0.574525	-3.732696311    
+    };
+\end{filecontents}
+
+\begin{document}
+\sisetup{per-mode=symbol}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        \textbf{Springs and Hooke's Law}
+
+        \vspace{0.5cm}
+        Lab: 06
+
+        \vspace{1cm}
+
+        \textbf{Jaden Moore}
+
+        \vfill
+
+        Orange Coast College\\
+        Physics A185L\\
+        October 9th, 2020
+
+    \end{center}
+\end{titlepage}
+
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\lhead{Springs and Hooke's Law}
+\rhead{Lab: 06}
+\cfoot{\thepage}
+
+\section{Introduction}
+In this lab, we utilize a force and motion sensor to capture the relative stiffness of a spring. We attach one end of the spring to a fixed position and apply an external force to the opposite end, measured by the force sensor. We then capture the relative displacement of the spring caused by this force using the motion sensor which allows us to calculate the stiffness of the spring. I expect the magnitude of the force recorded by the sensor to increase linearly with the displacement of the spring.
+
+\section{Springs}
+The stiffness of a spring is referred to as the \textit{spring constant} and represented by $k$. The force required to stretch or compress this spring is equal to the spring constant $k$ multiplied by the displacement of the spring $x$ such that:
+
+\[F_\text{spring} = kx\]
+
+This indicates that the force required to stretch or compress a spring scales linearly with respect to the displacement relative to its resting position. Because of this, we expect a linear fit to accurately describe the relationship between the force and the position of the spring. The following graph depicts the data collected by a force sensor measuring the force exerted by the spring onto the sensor as the spring is drawn further from its resting position. As we increase the distance from the springs resting position, we expect the force to scale linearly.
+
+\begin{figure}[H]
+    \centering
+
+    \caption[10pt]{The relationship between the force and position of a spring}
+
+    \begin{tikzpicture}
+        \pgfplotsset{width=10cm,
+        legend style={font=\footnotesize}}
+        \begin{axis}[
+        xlabel={Position $(m)$},
+        xmin=0.3,
+        xmax=0.7,
+        ylabel={Force $(N)$},
+        ymin=-4.5,
+        ymax=-1.5,
+        yticklabel=\pgfmathprintnumber{\tick},
+        legend cell align = left,
+        legend pos = north east,
+        ]
+        \addplot[only marks] table[x=X,y=F]{data1.csv};
+        \addplot[black,smooth,domain=0.4:0.6] {-10.497*x + 2.2737};
+        \addlegendimage{only marks}
+        \addlegendentry{force over distance}
+        \addlegendimage{no markers, red}
+        \addlegendentry{linear regression}
+    \end{axis}
+    \end{tikzpicture}
+\end{figure}
+
+\paragraph{}
+
+From the linear regression we get the general equation of the line of best fit to be:
+\[y=-(10.5 \pm \SI{0.3}{\newton\per\metre})x + 2.3 \pm \SI{0.1}{\newton}\]
+
+\paragraph{}
+
+An analysis of Figure 1 indicates that as the distance of the spring from its resting position increases, it exerts an increasing force opposite of its relative displacement. That is, it is pushing or pulling back toward its resting position with increasing force depending on the magnitude and direction of its displacement. This indicates that the force is scaling linearly with the displacement of the spring. From our equation, we get that the spring constant $k$ must be equal to $-10.5 \pm \SI{0.3}{\newton\per\metre}$. If we take the positive x-axis to be the spring being stretched outward, then the negative value of the spring constant indicates that the spring is exerting the force opposite of its relative movement, or toward the negative x-axis in this case.
+
+Furthermore, we notice that we have a non-zero y-intercept produced in the general equation. First consider that if the y-intercept was zero, then the force exerted by the spring would be zero when there has been zero displacement which makes intuitive sense because the spring would be at its resting position. The general equation that we received suggests that the spring is exerting a force even when the spring has not been displaced. This suggests that there are slight errors in the data collected by the force and motion sensors that are suggesting that the spring is exerting a force even when it is at rest. According to Hooke's law, the force exerted by a spring in its resting position, or a spring with zero displacement, should be equal to zero.
+
+\section{Conclusion}
+The data collected by the motion and force sensor, in combination with each other, painted the expected linear relationship between the displacement of the spring and the force that the spring exerts in the opposite direction of its displacement. We initially expected a linear fit to accurately describe this relationship which is what we achieved from the aggregated data in Figure 1. We found that for this particular spring, the spring constant is approximately equivalent to $-10.5 \pm \SI{0.3}{\newton\per\metre}$. Furthermore, we expected that when the spring has undergone zero displacement, it would exert zero force. However, the data suggests that the spring is exerting a force even when the spring is at rest, which indicates that there is a slight error in the data collected.
+\end{document}
