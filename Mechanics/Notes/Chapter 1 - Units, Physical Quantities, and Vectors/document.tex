@@ -1,0 +1,125 @@
+\documentclass[12pt]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{fancyhdr}
+
+\usepackage{geometry}
+\usepackage{siunitx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\title{
+    Chapter 1 \\
+    Units, Physical Quantities, and Vectors
+    }
+\author{Jaden Moore}
+\date{October 29, 2020}
+\linespread{1.5}
+
+\begin{document}
+\sisetup{per-mode=symbol}
+
+\maketitle
+
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\lhead{Units, Physical Quantities, and Vectors}
+\rhead{Chapter: 01}
+\cfoot{\thepage}
+
+\section{Standards and Units}
+The metric system is also known as the “SI” system
+of units. (SI ≡ Système International).
+
+\begin{itemize}
+    \item[A.] \textbf{\underline{Length}} — The unit of length in the metric system is the meter.
+          A meter is the distance that light travels in a vacuum.
+          ($\frac{1}{299,792,457}$ seconds).
+
+    \item[B.] \textbf{\underline{Mass}} — The unit of \textit{mass} in the metric system is the kilogram.
+          A \textit{\underline{kilogram}} is the mass of a particular cylinder of
+          platinum-iridium alloy kept at the International Bureau of
+          Weights and Measures in Paris, France.
+
+    \item[C.] \textbf{\underline{Time}} — The unit of \textit{time} in the metric system is the \textit{\underline{second}}. A
+          second is the time required for 9,192,631,770 cycles of a particular microwave radiation associated with cesium
+          atoms that occurs in the transition between its two lowest
+          energy states.
+\end{itemize}
+
+\section{Uncertainty and Significant Figures}
+When a value is not known precisely, the amount of
+uncertainty is usually called an “error”. Error represents
+uncertainty and has nothing to do with mistakes or
+sloppiness.
+
+A significant figure is a reliably known digit. When we
+say that a quantity has the value 3, we mean by
+convention that the value could actually be anywhere
+between 2.5 and 3.5. However, if we say that the value is
+3.0, then we mean the value lies between 2.95 and 3.05.
+\subsection{Significant Figures in Addition or Subtraction:}
+The number of decimal places in the result should
+equal the smallest number of decimal places of any term from the original equation.
+
+\begin{equation} \label{eq1}
+    23.45 + 1.345 = 24.795 ⇒ 24.80
+\end{equation}
+
+\begin{equation} \label{eq2}
+    56 - 34.56 = 21.44 ⇒ 21
+\end{equation}
+
+\subsection{Significant Figures in Multiplication or Division:}
+The number of significant figures in the final product
+is the same as the number of significant figures in the
+factor with the lowest number of significant figures.
+
+\begin{equation} \label{eq3}
+    123.56(7.89) = 974.8884 ⇒ 975
+\end{equation}
+
+\begin{equation} \label{eq4}
+    \frac{564}{0.0034} = 165882.352941 ⇒ 1.7x10^5
+\end{equation}
+
+\section{Vectors and Vector Addition}
+\begin{itemize}
+    \item[A.] \textbf{\underline{Scalar}} — A \textit{scalar} quantity is a physical quantity that has only magnitude. Examples:
+          \begin{enumerate}
+              \item Mass m (in kilograms, kg)
+              \item time t (in seconds, s or sec)
+              \item temperature T (in Kelvin, K)
+              \item volume V (in cubic meters, $m^3$)
+              \item density $\rho$ (in $kg/m^3$)
+              \item energy \textit{E} (in Joules, J)
+              \item distance \textit{d} (in meters, m)
+              \item speed v (in meters per second, m/s)
+              \item electric charge q (in Coulombs, C)
+          \end{enumerate}
+
+    \item[B.] \textbf{\underline{Vector}} — A \textit{vector} quantity is a physical quantity that has both magnitude and a direction. Examples:
+          \begin{enumerate}
+              \item displacement $\Delta r$ (in meters, $m$)
+              \item velocity $\vec{v}$ (in meters per second, $m/s$)
+              \item acceleration $\vec{a}$ (in meters per second square, $m/s^2$)
+              \item force $\vec{F}$ (in Newtons, $N$)
+              \item linear momentum $\vec{p}$ (in $kg m/s$)
+              \item angular momentum $\vec{L}$(in $kg m^2 / sec$)
+          \end{enumerate}
+\end{itemize}
+
+\paragraph{}
+
+\subsection{The Displacement Vector $\Delta r$}
+The displacement vector $\Delta r$ of an object is defined as the
+vector whose magnitude is the shortest distance between
+the initial and final positions of the object, and whose
+direction points from the initial position to the final
+position.
+
+\subsection{Components of Vectors}
+
+\end{document}
