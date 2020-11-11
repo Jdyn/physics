@@ -1,0 +1,142 @@
+\documentclass[12pt]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{pgf}
+\usepackage{pgfplots}
+\usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{array}
+
+\usetikzlibrary{scopes}
+\usetikzlibrary{angles,quotes}
+\usetikzlibrary{calc}
+\pgfplotsset{compat=1.5}
+
+\begin{filecontents}{data1.csv}
+    T	     W	     V
+    0.00	0.00	0.00
+    0.20	0.49	0.98
+    0.40	0.98	1.96
+    0.60	1.47	2.94
+    0.80	1.96	3.92
+    1.00	2.45	4.90
+    1.20	2.94	5.88
+    1.40	3.43	6.86
+    1.60	3.92	7.84
+    1.80	4.41	8.82
+    2.00    4.90    9.80
+    2.20	5.39	10.78
+    2.40	5.88	11.76
+    2.60	6.37	12.74
+    2.80	6.86	13.72
+};
+\end{filecontents}
+
+\begin{document}
+\sisetup{per-mode=symbol}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        \textbf{Torque and Moment of Inertia}
+
+        \vspace{0.5cm}
+        Lab: 09
+
+        \vspace{1cm}
+
+        \textbf{Jaden Moore}
+
+        \vfill
+
+        Orange Coast College\\
+        Physics A185L\\
+        November 8th, 2020
+
+    \end{center}
+\end{titlepage}
+
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\lhead{Torque and Moment of Inertia}
+\rhead{Lab: 09}
+\cfoot{\thepage}
+
+\section{Introduction}
+In this lab, we analyze the motion of a pulley consisting of a single solid cylinder, a massless rope, and a hanging mass. One end of the hanging mass is attached to the massless rope which is positioned over the rotating cylinder. We then measure the angular acceleration of the cylinder as it is rotated about a fixed axis through its center of mass and the resulting linear acceleration of the hanging mass caused by the motion of the rotating cylinder.
+\section{Angular and Linear Speed}
+Consider the motion of the system described above where the mass of the hanging block $m_1$ is 1.00 kg, the mass of the pulley is $m_2$ is 2.00 kg, and the radius of the pulley $R$ is 2.00 m. Throughout the motion of the system, we measure the angular speed of the pulley and the linear speed of the hanging block over time. We represent the angular speed of the cylindrical pulley as $\omega$ and the linear speed of the hanging mass as $v$.
+\setlength{\tabcolsep}{1pt}
+\renewcommand{\arraystretch}{1}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\begin{figure}[H]
+    \begin{center}
+        \begin{tabular}{ P{3cm} P{3cm} P{3cm} }
+            \hline
+            \multicolumn{3}{c}{Table 1: Velocities of the system over time} \\
+            \hline
+            $time (s)$ & $\omega (rad/s)$ & $v (m/s)$                       \\
+            \hline
+            0.00       & 0.00             & 0.00                            \\
+            0.20       & 0.49             & 0.98                            \\
+            0.40       & 0.98             & 1.96                            \\
+            0.60       & 1.47             & 2.94                            \\
+            0.80       & 1.96             & 3.92                            \\
+            1.00       & 2.45             & 4.90                            \\
+            1.20       & 2.94             & 5.88                            \\
+            1.40       & 3.43             & 6.86                            \\
+            1.60       & 3.92             & 7.84                            \\
+            1.80       & 4.41             & 8.82                            \\
+            2.00       & 4.90             & 9.80                            \\
+            2.20       & 5.39             & 10.78                           \\
+            2.40       & 5.88             & 11.76                           \\
+            2.60       & 6.37             & 12.74                           \\
+            2.80       & 6.86             & 13.72                           \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{figure} 
+
+\paragraph{}
+
+A preliminary analysis of the data indicates that as time increases, the angular and linear speed of the system increases which indicates that the hanging mass and the pulley are accelerating. Because of this, we expect the slope of a linear regression of the angular speed over time to represent the angular acceleration $\alpha$ of the pulley. This is because the slope of the line represents the rate at which the speed is changing which is equivalent to acceleration. From the linear regression, we get the general equation for angular speed to be:
+
+\begin{equation} \label{eq1}
+    y=(2.45 \pm \SI{0.0}{rad/s^2})x + \SI{0.0}{rad/s}
+\end{equation}
+
+
+From Equation 1, we get the slope of the line to be $2.45 \pm \SI{0.0}{rad/s^2}$ which is equal to the angular acceleration $\alpha$ of the pulley. Similarly, for the linear acceleration of the hanging mass, we get the general equation to be:
+
+\begin{equation} \label{eq2}
+    y=(4.9 \pm \SI{0.0}{m/s^2})x + \SI{0.0}{m/s}
+\end{equation}
+
+With Equation 2, we are able to equate the slope of the linear regression to the linear acceleration of the hanging mass. In this case, the linear acceleration $a$ is equal to $4.9 \pm \SI{0.0}{m/s^2}$. In both cases, we are able to conclude that the hanging mass and the pulley maintain a constant acceleration throughout their motion.
+
+\section{Torque and Moment of Inertia}
+Consider the expression for the theoretical value of angular acceleration which was derived using Newton's second law and the moment of inertia of the cylindrical pulley on the attached handout. In this case, it is
+
+\begin{equation} \label{eq3}
+    \alpha_\text{theory}=\frac{2m_1g}{(2m_1 + m_2)R}
+\end{equation}
+
+and the equation for the theoretical value of linear acceleration
+\begin{equation} \label{eq4}
+    a_\text{theory}=\frac{2m_1g}{(2m_1 + m_2)}
+\end{equation}
+
+We notice that we get a $0.0$\% error with respect to our experimental data. This indicates that the experiment directly used the theoretical laws of physics.
+\paragraph{}
+
+\section{Conclusion}
+The angular and linear speed of the pulley and the hanging block over time appeared to increase linearly over time which indicates that the objects are moving with constant acceleration. We used a linear regression on the model and extrapolated the acceleration of the individual objects. We found the angular acceleration of the pulley to be $2.45 \pm \SI{0.0}{rad/s^2}$ and the linear acceleration of the hanging block to be $4.9 \pm \SI{0.0}{m/s^2}$ which aligns conclusively with the theoretical values of acceleration with zero margin of error.
+\end{document}
