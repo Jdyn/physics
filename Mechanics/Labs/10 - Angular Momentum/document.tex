@@ -1,0 +1,157 @@
+\documentclass[12pt]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{pgf}
+\usepackage{pgfplots}
+\usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{array}
+
+\usetikzlibrary{scopes}
+\usetikzlibrary{angles,quotes}
+\usetikzlibrary{calc}
+\pgfplotsset{compat=1.5}
+
+\newcommand{\ihat}{\hat{\i}}
+\newcommand{\jhat}{\hat{\j}}
+
+\begin{document}
+\sisetup{per-mode=symbol}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        \textbf{Angular Momentum}
+
+        \vspace{0.5cm}
+        Lab: 10
+
+        \vspace{1cm}
+
+        \textbf{Jaden Moore}
+
+        \vfill
+
+        Orange Coast College\\
+        Physics A185L\\
+        November 15th, 2020
+
+    \end{center}
+\end{titlepage}
+
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\lhead{Angular Momentum}
+\rhead{Lab: 10}
+\cfoot{\thepage}
+
+\section{Introduction}
+In this lab, we analyze whether the total angular momentum of a system remains with internal collisions remains constant throughout its motion. Consider a system of two masses positioned such that one mass is tethered to a massless rope that is fixed to the center of a table. The other mass is positioned to the right of the tethered mass. We then analyze the motion of the system as the masses collide and determine if the total angular momentum is conserved before and after the collision.
+
+\section{Angular Momentum}
+Let the tethered mass be a hockey puck $m_B$ with a mass of 0.1 kg and the massless rope have a radius $R$ of 10 m. Then let the mass positioned to the right of $m_B$ be another hockey puck $m_R$ with a mass of 0.1 kg, such that:
+
+\begin{figure}[H]
+    \centering
+
+    \caption[10pt]{The position of the system at t=0}
+
+    \begin{tikzpicture}[scale=0.9]
+        \begin{scope}
+
+            \node[gray] (origin) at (-0.6, -0.4) {$(0, 0)$};
+
+            {[densely dashed,gray,font=\small,->]
+            \draw (-4, 0) -- (4,0) node[right] {$+x$};
+            \draw (0,-5) -- (0,1) node[right] {$+y$};
+            }
+
+            \draw[black, ultra thick] (0cm,0cm) -- (0, -3) coordinate(A) node[above, shift={(1,1.5)}, black]{$R = 10m$};
+
+            \fill[] (0,-3) circle (2mm) node[above, shift={(-2,-0.3)}, black]{$m_B$ (0m, -10m)};
+
+            \fill[red] (3,-3) circle (2mm) node[above, shift={(0,0.2)}, black]{$m_R$ (10m, -10m)};
+
+        \end{scope}
+    \end{tikzpicture}
+\end{figure}
+The total angular momentum of the system is equal to the sum of the angular momentum of the individual masses. the angular momentum of an individual mass can be represented as such:
+
+\begin{equation} \label{eq1}
+    \vec{l} = \vec{r} \text{ x } \vec{p}
+\end{equation}
+
+
+Before the the masses collide, we measure the linear momentum of $m_B$ to be zero because it is not moving, thus the angular momentum must be zero. In the case of $m_R$ we found that it traveled 1 m in 0.2 seconds, thus its velocity can be represented as 5 m/s. From Equation 1, we get the angular momentum $\vec{l_R}$ to be:
+
+\begin{equation*}
+    \begin{split}
+        \vec{l}_R & = (0 \text{m $\hat{i}$} - 10 \text{m $\hat{j}$})(\SI{5.0}{m/s} \text{ $\hat{i}$}) (\SI{0.1}{kg}) \\
+        \vec{l}_R & = (0 + \SI{50}{m^2/s} \text{ $\hat{j}$ x $\hat{i}$}) (\SI{0.1}{kg}) \\
+        \vec{l}_R & = \SI{-5}{kg m^2/s} \text{ $\hat{k}$}
+    \end{split}
+\end{equation*}
+
+From this, we get that before the first collision, the total angular momentum of the system is:
+
+\begin{equation} \label{eq2}
+    \vec{l}_\text{total} = \vec{l_R} + \vec{l_B}
+\end{equation}
+
+That is,
+
+\begin{equation*}
+    \begin{split}
+        \vec{l}_\text{total} & = \SI{-5}{kg m^2/s} \text{ $\hat{k}$} + 0 \\
+        \vec{l}_\text{total} & = \SI{-5}{kg m^2/s} \text{ $\hat{k}$}
+    \end{split}
+\end{equation*}
+
+After the first collision the velocity of $m_R$ becomes zero and $m_B$ begins to move with constant angular velocity. Thus we can expect the angular momentum of $m_R$ to be zero. Since $m_B$ is moving about a fixed radius with constant velocity, we can find the linear velocity from the following relation:
+
+\begin{equation} \label{eq3}
+    \vec{v}_B = R \omega = R \frac{\Delta \theta}{\Delta t} = R \frac{\theta_f - \theta_o}{t_f - t_o}
+\end{equation}
+
+In this case, we find that at $t_o$=1.75, then $\theta_o = \frac{3\pi}{2}$ and at $t_f$=4.85, then $\theta_f = \pi$, that is
+
+\begin{equation*}
+    \begin{split}
+        \vec{v}_B & = \frac{\SI{10}{m}(\pi - \frac{3\pi}{2})}{\SI{4.85}{sec} - \SI{1.75}{sec}} = \SI{-5.06}{m/s}
+    \end{split}
+\end{equation*}
+
+After finding the linear velocity of $m_B$ we are able to calculate its angular momentum such that
+
+\begin{equation*}
+    \begin{split}
+        \vec{l}_B & = (-10 \text{ m $\hat{i}$} - 10 \text{m $\hat{j}$})(\SI{5.06}{m/s} \text{ $\hat{i}$}) (\SI{0.1}{kg}) \\
+        \vec{l}_B & = (-50 \text{ $\hat{i}$ x $\hat{i}$} - \SI{50.6}{m^2/s} \text{ $\hat{j}$ x $\hat{i}$}) (\SI{0.1}{kg}) \\
+        \vec{l}_B & = 0 - \SI{5.06}{kg m^2/s} \text{ $\hat{k}$} \\
+        \vec{l}_B & = \SI{-5.06}{kg m^2/s} \text{ $\hat{k}$}
+    \end{split}
+\end{equation*}
+
+Thus, from Equation 2 we find that:
+
+\begin{equation*}
+    \begin{split}
+        \vec{l}_\text{total} & = 0 - \SI{5.06}{kg m^2/s} \text{ $\hat{k}$} \\
+        \vec{l}_\text{total} & = \SI{-5.06}{kg m^2/s} \text{ $\hat{k}$}
+    \end{split}
+\end{equation*}
+
+From this, we compare the total angular momentum before and after the collision and notice that the total angular momentum of the system did not change. That is, before and after the collision the total angular momentum in the system is $\SI{-5}{kg m^2/s} \text{ $\hat{k}$}$. Note however, we obtain a slight margin of error in the total angular momentum after the collision due to the physical limitations of the measuring device. These findings are replicated in the second collision between the two masses, when $m_B$ finishes rotating around the radius of the massless string and strikes $m_A$. In this case, the total angular momentum was also found to be conserved as shown in the appended works.
+
+From the law of conservation of angular momentum we can conclude that no external torque $\vec{\tau}$ is acting on the system. That is, the angular momentum of the system is constant because all torque $\vec{\tau}$ acting in the system is internal. If there are any external torque $\vec{\tau}$ acting on the system, we would expect the angular momentum of the system to change.
+
+\section{Conclusion}
+We measured the total angular momentum of the system before and after two collisions between the masses within the system which was found to be $\SI{-5}{kg m^2/s} \text{ $\hat{k}$}$ throughout. From this, we were able to determine that the total angular momentum of the system is conserved. This indicates that the total external torque $\vec{\tau}$ acting on the system is equal to zero due to the law of conservation of angular momentum. We obtained a slight margin of error in the angular momentum of $m_B$ after the collision due to the nature of the physical measuring device.
+\end{document}
