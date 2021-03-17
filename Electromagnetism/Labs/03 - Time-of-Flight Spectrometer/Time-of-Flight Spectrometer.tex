@@ -1,0 +1,198 @@
+\documentclass[12pt]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{pgf}
+\usepackage{pgfplots}
+\usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{pstricks-add}
+\usepackage{pgfplotstable}
+
+\usetikzlibrary{scopes}
+\usetikzlibrary{angles,quotes}
+\usetikzlibrary{calc}
+\pgfplotsset{compat=1.5}
+
+\newcommand*{\I}{\imath}
+\newcommand*{\J}{\jmath}
+\newcommand{\norm}[1]{\lvert #1 \rvert}
+
+\setlist[enumerate, 1]{label=\alph*.}
+
+
+\begin{document}
+\sisetup{per-mode=symbol}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        \textbf{Time-of-Flight Spectrometer}
+
+        \vspace{0.5cm}
+        Lab: 03
+
+        \vspace{1cm}
+
+        \textbf{Jaden Moore}
+
+        \vfill
+
+        Orange Coast College\\
+        Physics A280L\\
+        March 15st, 2021
+
+    \end{center}
+\end{titlepage}
+
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\lhead{Time-of-Flight Spectrometer}
+\rhead{Lab: 03}
+\cfoot{\thepage}
+
+\section{Introduction}
+In this lab, we use a mass spectrometer to identify various characteristics of multiple charged particle moving away from two oppositely charged parallel plates. The particles are released from rest and then move toward the mass spectrometer. We then calculate the mass if each particle and determine the type of element it is based on the periodic table.
+
+\section{Mass Spectrometer}
+Consider a charge particle placed in the middle of two parallel plates. The particle is released from rest and experiences a force exerted by the positive charged plate toward the negative charged plate. It then passes through the negatively charged plate and hits the mass spectrometer. The data in this lab is sourced from the Physlet\textregistered \space Physics: Time-of-Flight Mass Spectrometer simulation 25.4. We collect data from the simulation with a mouse.
+\subsection{Electric Potential}
+
+(a) First, consider the electric potential $V_{initial}$ of a particle when it is between the two plates. Let the left parallel plate have a positive electric potential $V_+=\SI{2000}{\volt}$ and the right parallel plate have a negative electric potential $V_-=\SI{0}{\volt}$ which is separated by some distance $d$, we can calculate the electric potential $V_{initial}$ directly between the two plates to be:
+
+\[V_{initial} - V_- = \int_{\frac{d}{2}}^{d} E\,dx= \frac{Ed}{2}\]
+
+Since we know that the value of $Ed$ is $V_+ - V_-$ because the field is uniform, we have:
+
+\[V_{initial} = \frac{V_+-V_-}{2} = \frac{2000 V - 0 V}{2} = 1000 V\]
+\subsection{Potential Energy inside the Plates}
+
+(b) It follows that if we let the particle maintain a charge $q=\SI{1.6}{x10^{-19} \coulomb}$ at the same location between the two plates, then the potential energy $U_{initial}$ of the particle is:
+
+\[U_{initial} = qV_{initial} = (\SI{1.6}{x10^{-19} \coulomb})(\SI{1000}{\volt}) = \SI{1.6}{x10^{-16} \joule}\]
+
+\subsection{Potential Energy outside the Plates}
+(c) As the particle exits the region between the two plates, the potential energy $U_{final}$ becomes zero since $V_-= V_{final} = 0$
+
+\[U_{final} = qV_{final} = \SI{1.6}{x10^{-19} \coulomb}(\SI{0}{\volt}) = \SI{0}{\joule}\]
+
+\subsection{Kinetic Energy outside the Plates}
+(d) Using the law of conservation of energy, we can find the kinetic energy of the particle outside the parallel plates to be:
+
+\begin{equation*}
+    \begin{split}
+        KE_{initial} + U_{initial} & = KE_{final} + U_{final} \\
+        \SI{0}{\joule} + \SI{1.6}{x10^{-16} \joule} & = KE_{final} + \SI{0}{\joule} \\
+        KE_{final} & = \SI{1.6}{x10^{-16} \joule}
+    \end{split}
+\end{equation*}
+
+\subsection{Mass of the Particle}
+(e) After the particle exits the two parallel plates, the force acting on the particle becomes zero and therefore its acceleration becomes zero. From this we can conclude that the particle's velocity $V_{final}$ remains constant throughout the rest of its motion. Finally, we can use basic kinematic equations and the law of conservation of energy to find the mass $m$ of the particle by measuring the distance $\Delta x$ and the time $\Delta t$ between the point where it leaves the electric field, to the spectrometer.
+
+\[V_{final} = \frac{\Delta x}{\Delta t} = \frac{\SI{8.2069}{x10^{-2}\metre}}{\SI{0.98}{x10^{-6}\second}} = \SI{83743}{\metre\per\second}\]
+And using the law of conservation of energy to find the mass, we have:
+\begin{equation*}
+    \begin{split}
+        KE_{final} + \frac{1}{2}mv_{final}^2 & = \SI{1.6}{x10^{-16} \joule} \\
+        \SI{0}{\joule} + \frac{1}{2}m(83743)^2 & = \SI{1.6}{x10^{-16} \joule} \\
+        m & = \frac{2(\SI{1.6}{x10^{-16} \joule})}{(83743)^2} \\
+        m & = \SI{27.32}{\amu}
+    \end{split}
+\end{equation*}
+
+Based on the periodic table of elements, it turns out that this particle is Aluminum. Now consider four different particles released from the same position. It follows that the particles with lesser mass will reach the spectrometer quicker than those with greater mass because the force exerted by the plate will have a greater impact on smaller masses.
+
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\setlength{\tabcolsep}{1pt}
+\renewcommand{\arraystretch}{1}
+
+\begin{figure}[H]
+    \begin{center}
+        \begin{tabular}{ P{10cm} }
+            \hline
+            \multicolumn{1}{c}{Table 1: Particles ordered by mass (least to greatest)} \\
+            \hline
+            Particle                                                                   \\
+            \hline
+            Red                                                                        \\
+            Blue                                                                       \\
+            Green                                                                      \\
+            Pink                                                                       \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{figure}
+
+\newpage
+
+(f) The table below measures the speed of each particle and the time it takes to go from its initial position to the spectrometer.
+
+\begin{figure}[H]
+    \begin{center}
+        \begin{tabular}{ P{4cm} P{4cm} P{4cm} }
+            \hline
+            \multicolumn{3}{c}{Table 2: the time of flight and speed of each particle} \\
+            \hline
+            Particle & Time of Flight $[\SI{}{\us}]$ & speed [m/s]    \\
+            \hline
+            Red      & 0.98                          & 83,743         \\
+            Blue     & 1.4                           & 58,286         \\
+            Green    & 1.7                           & 48,000         \\
+            Pink     & 1.96                          & 41,633         \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{figure}
+
+(g) The table below shows the mass of each particle using the calculations shown above for the rest of the particles.
+
+\begin{figure}[H]
+    \begin{center}
+        \begin{tabular}{ P{4cm} P{4cm} P{4cm} }
+            \hline
+            \multicolumn{3}{c}{Table 3: the mass of each particle} \\
+            \hline
+            Particle & mass [kg]            & mass [$\SI{}{\amu}$]    \\
+            \hline
+            Red      & \SI{4.56}{x10^{-26}} & 27.32                   \\
+            Blue     & \SI{9.42}{x10^{-26}} & 56.73                   \\
+            Green    & \SI{13.9}{x10^{-26}} & 83.71                   \\
+            Pink     & \SI{18.4}{x10^{-26}} & 110.54                  \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{figure}
+
+(h) From the periodic table of elements, we can determine the type of element that each particle is based on their mass. The table below represents each particle and the type of element.
+
+\begin{figure}[H]
+    \begin{center}
+        \begin{tabular}{ P{4cm} P{8cm} }
+            \hline
+            \multicolumn{2}{c}{Table 4: the type of element of each particle} \\
+            \hline
+            Particle & name of singly-charged-atom                            \\
+            \hline
+            Red      & Aluminum (Al)                                          \\
+            Blue     & Iron (Fe)                                              \\
+            Green    & Krypton (Kr)                                           \\
+            Pink     & Silver (Ag)                                            \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{figure}
+
+\section{Conclusion}
+It follows from the lab that a suitable method of determining what elements are in an unknown substance is to use mass spectrometry. In the experiment, we obtained the mass of particles through a series of calculations involving the law of conservation of energy and electric potential, and then matched the gathered mass with the mass on the periodic table to determine the element. The greatest obstacle in the lab in general, was calculating the mass of each particle through a series of calculations. The biggest takeaway from the lab was gaining a better understanding of how scientist can identify unknown elements within a substance and how this could be very useful in the real world.
+\end{document}
