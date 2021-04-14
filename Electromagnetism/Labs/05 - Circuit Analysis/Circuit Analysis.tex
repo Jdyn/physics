@@ -107,7 +107,7 @@ i. The combined resistance of $R_A$ and $R_B$ since they are connected in parall
 
 \bigskip
 
-ii. Since $R_C$ is in series with the parallel resistors $R_A$ and $R_B$ when both switches are closed, we can use the fact that the bulbs are series  to get the effective resistance of the circuit, thus:
+ii. Since $R_C$ is in series with the parallel resistors $R_A$ and $R_B$ when both switches are closed, we can use the fact that the bulbs are series in to get the effective resistance of the circuit, thus:
 
 \[R_{eq} = \frac{1}{2}R_A + R_C \]
 
@@ -130,11 +130,7 @@ Thus, we get that:
 
 \bigskip
 
-(i) When one switch is open and one switch is closed, we get the effective resistance $R_2$ to be:
-
-\bigskip
-
-When one switch is closed, Bulb $R_C$ is in series with either $R_A$ or $R_B$. Thus, when we take it when $S_2$ is closed, we get:
+(i) When one switch is closed, Bulb $R_C$ is in series with either $R_A$ or $R_B$. Thus, if we take it when $S_2$ is closed, we get $R_2$:
 
 \bigskip
 
@@ -165,9 +161,29 @@ Thus, since $R_C$ is in series with $R_A$, we get that:
 \bigskip
 
 Solving the series of equations, we get:
+
+\begin{equation*}
+    \begin{split}
+        R_A & = 20 - R_C \\
+        \frac{1}{2}(20 - R_C) + R_C & = \SI{15}{\ohm} \\
+        10 - \frac{1}{2}R_C + R_C & = \SI{15}{\ohm} \\
+        R_C & = \SI{10}{\ohm}
+    \end{split}
+\end{equation*}
+
+\begin{equation*}
+    \begin{split}
+        R_A + R_C & = \SI{20}{\ohm} \\
+        R_A + 10 & = \SI{20}{\ohm} \\
+        R_A & = \SI{10}{\ohm}
+    \end{split}
+\end{equation*}
+
+Thus,
+
 \[R_A = R_B = \SI{10}{\ohm}\]
 \[R_C = \SI{10}{\ohm}\]
 
 \section{Conclusion}
-From the lab, we get that the resistance across all three bulbs is equivalent to each other at $\SI{10}{\ohm}$. We predicted this in the beginning based on the brightness of the bulbs after opening and closing the switches. The greatest obstacle was viewing the circuit differently in a way that makes it quicker to solve. Before, One would use parallel and series resistors, Kirchhoff's laws, and Ohm's law to solve the circuit which would take much more time to solve. The biggest takeaway is understanding how to analyze circuits in different ways to same time and be more efficient in solving problems.
+From the lab, we get that the resistance across all three bulbs is equivalent to each other at $\SI{10}{\ohm}$. We predicted this in the beginning based on the brightness of the bulbs after opening and closing the switches. The greatest obstacle was viewing the circuit differently in a way that makes it quicker to solve. Before this, One would use Kirchhoff's loop laws to solve the circuit which would take much more time to solve. The biggest takeaway is understanding how to analyze circuits in different ways to same time and be more efficient in solving problems.
 \end{document}
