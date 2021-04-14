@@ -61,7 +61,115 @@
 \cfoot{\thepage}
 
 \section{Introduction}
+In this lab, we analyze the properties of an electric circuit to find the resistance of each bulb on the circuit.
 
+\section{Circuit Analysis}
+Consider the circuit provided by Physlet\textregistered \space Physics - Exploration 30.2: Lightbulbs. Below we analyze the properties of the circuit and determine the resistance of the lightbulbs at each point.
 
+\bigskip
 
+(a) We can see that when one switch is open and the other is closed, bulb C becomes in series with one of the bulbs depending on which switch was closed. The current becomes larger to the bulb because when one switch is opened, it is no longer in parallel with the other bulb so the total resistance to the current gets smaller, thus the bulb gets brighter.
+
+\bigskip
+
+(b) We can see that when switch $S_1$ is closed and switch $S_2$ is open, the current through the circuit is $\SI{1.00}{\ampere}$.
+
+\bigskip
+
+(c) When switch $S_1$ is closed and switch $S_2$ is open, the current through the circuit is still $\SI{1.00}{\ampere}$.
+
+\bigskip
+
+(d) This proves that bulb $R_A$ and bulb $R_B$ are identical because from Ohm's law, we have $R=\frac{\Delta V}{I}$ and since the voltage is the same across both bulbs $R_A$ and $R_B$ because they are connected in parallel and, the current is the same between both of them because they have the same brightness, then $R_A$ =$R_B$
+
+\bigskip
+
+(e) When one switch is open and one is closed, the brightness of bulb $R_C$ is equivalent to the bulb it is in series with.
+
+\bigskip
+
+(f) This indicates that the resistance of bulb $R_C$ is also equal to the resistance of bulb $R_A$ and $R_B$
+
+\bigskip
+
+(g)
+
+\bigskip
+
+i. The combined resistance of $R_A$ and $R_B$ since they are connected in parallel can be calculated as such:
+
+\begin{equation*}
+    \begin{split}
+        \frac{1}{R} & = \frac{1}{R_A} + \frac{1}{R_B} \\
+        \frac{1}{R} & = \frac{1}{R_A} + \frac{1}{R_A} \\
+        \frac{1}{R} & = \frac{2}{R_A} \\
+        R & = \frac{1}{2}R_A
+    \end{split}
+\end{equation*}
+
+\bigskip
+
+ii. Since $R_C$ is in series with the parallel resistors $R_A$ and $R_B$ we get the effective resistance of the circuit to be:
+
+\[R_{eq} = \frac{1}{2}R_A + R_C \]
+
+\bigskip
+
+(h) When both switches are closed, we get the effective resistance $R_1$ from Ohm's law to be:
+
+\bigskip
+
+\[R_1 = \frac{\Delta V}{I} = \frac{20}{\frac{4}{3}} = \SI{15}{\ohm}\]
+
+Thus, we get that:
+
+\begin{equation*}
+    \begin{split}
+        \frac{1}{2}R_A + R_C & = R_1 \\
+        \frac{1}{2}R_A + R_C & = \SI{15}{\ohm}
+    \end{split}
+\end{equation*}
+
+\bigskip
+
+(i) When one switch is open and one switch is closed, we get the effective resistance $R_2$ to be:
+
+\bigskip
+
+When one switch is closed, Bulb $R_C$ is in series with either $R_A$ or $R_B$. Thus, when we take it when $S_2$ is closed, we get:
+
+\bigskip
+
+From Ohm's Law:
+
+\[R_2 = \frac{\Delta V}{I} = \frac{20}{1} = \SI{20}{\ohm}\]
+
+Thus, since $R_C$ is in series with $R_A$, we get that:
+
+\begin{equation*}
+    \begin{split}
+        R_A + R_C & = R_2 \\
+        R_A + R_C & = \SI{20}{\ohm}
+    \end{split}
+\end{equation*}
+
+\bigskip
+
+(j) Setting up the equations obtained in (h), we get the following setup:
+
+\begin{equation*}
+    \begin{split}
+        R_A + R_C & = \SI{20}{\ohm} \\
+        \frac{1}{2}R_A + R_C & = \SI{15}{\ohm}
+    \end{split}
+\end{equation*}
+
+\bigskip
+
+Solving the series, we get:
+\[R_A = R_B = \SI{10}{\ohm}\]
+\[R_C = \SI{10}{\ohm}\]
+
+\section{Conclusion}
+From the lab, we get that the resistance across all three bulbs is equivalent to each other at $\SI{10}{\ohm}$. We predicted this in the beginning based on the brightness of the bulbs after opening and closing the switches. The greatest obstacle was viewing the circuit differently in a way that makes it quicker to solve. Before, One would use parallel and series resistors, Kirchhoff's laws, and Ohm's law to solve the circuit which would take much more time to solve. The biggest takeaway is understanding how to analyze circuits in different ways to same time and be more efficient in solving problems.
 \end{document}
