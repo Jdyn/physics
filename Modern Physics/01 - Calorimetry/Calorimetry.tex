@@ -1,0 +1,129 @@
+\documentclass[12pt]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\usetikzlibrary{scopes}
+\usetikzlibrary{angles,quotes}
+\usetikzlibrary{calc}
+\graphicspath{ {/} }
+
+\newcommand*{\I}{\imath}
+\newcommand*{\J}{\jmath}
+\newcommand{\norm}[1]{\lvert #1 \rvert}
+
+\setlist[enumerate, 1]{label=\alph*.}
+
+\begin{document}
+\sisetup{per-mode=symbol}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        \textbf{Calorimetry}
+
+        \vspace{0.5cm}
+        Lab: 01
+
+        \vspace{1cm}
+
+        \textbf{Jaden Moore}
+
+        \vfill
+
+        Orange Coast College\\
+        Physics A285L\\
+        September 18th, 2021
+
+    \end{center}
+\end{titlepage}
+
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\lhead{Calorimetry}
+\rhead{Lab: 01}
+\cfoot{\thepage}
+
+\section{Introduction}
+In this lab, we measure the final temperature of a system consisting of a hot solid submerged in cold water after reaching thermal equilibrium. We then compare the experimental equilibrium temperature with the theoretical temperature to obtain a percent error between the two.
+
+\section{Calorimetry}
+Consider the experiment provided by Physlet\textregistered \space Physics Exploration 19.3: Calorimetry. Recall that when two systems at different temperatures come in thermal contact, they will eventually become equal in temperature. That is, the heat lost by the solid block is equal to the heat gained by the water since thermal energy travels from hot to cold. Thus, the theoretical temperature can be calculated such that,
+
+\begin{equation}
+    \begin{split}
+        T_{f-theory} &= \frac{m_wc_wT_{iw} + m_bc_bT_{ib}}{m_wc_w+m_bc_b}
+    \end{split}
+\end{equation}
+
+Where $m_w$, $m_b$ is the mass of the water and block respectively; $c_w$, $b_w$ is the specific heat capacity of water and block respectively; and $T_{iw}$, $T_{ib}$ is the initial temperature of the water and block respectively.
+
+From this we can calculate the theoretical equilibrium temperature $T_f$. For example, for a system consisting of $m_b=\SI{1}{kg}$, $m_w=\SI{10}{kg}$, $T_{ib}=\SI{500}{K}$, and $T_{iw}=\SI{300}{K}$. We get that,
+
+\begin{equation}
+    \begin{split}
+        T_{f-theory} &= \frac{(\SI{10}{\kilogram})(\SI{4186}{\joule\per\kilogram\per\degreeCelsius})(\SI{300}{\kelvin}) + (\SI{1}{\kilogram})(\SI{390}{\joule\per\kilogram\per\degreeCelsius})(\SI{500}{\kelvin})}{(\SI{10}{\kilogram})(\SI{4186}{\joule\per\kilogram\per\degreeCelsius}) + (\SI{1}{\kilogram})(\SI{390}{\joule\per\kilogram\per\degreeCelsius})} \\
+        T_{f-theory} &= \SI{301.8}{\kelvin}
+    \end{split}
+\end{equation}
+
+We then calculate the percent error between the experimental temperature gathered from the experiment and the theoretical value gathered from equation (1) above, such that
+
+\begin{equation}
+    \begin{split}
+        \text{percent error} &= \left( \frac{T_{f-exp} - T_{f-theory}}{T_{f_theory}} \right) 100 \\
+        \text{percent error} &= \SI{-0.0153
+        }{\percent}
+    \end{split}
+\end{equation}
+
+Using the approach above, we put into a table below, the experimental equilibrium temperatures from multiple experiments along with the corresponding theoretical temperatures and percent error between the two.
+
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{figure}[H]
+    \begin{center}
+        \begin{tabular}{ P{2.5cm} P{2.5cm} P{2.5cm} P{2.5cm} P{2.5cm} }
+            \hline
+            \multicolumn{5}{c}{Table 1: Equilibrium Temperatures at different masses of the solid block} \\
+            
+            \hline
+            $m_b [kg]$ & $T_{ib} [K]$ & $T_{f-exp} [K]$ & $T_{f-theory} [K]$ & $ \% error$ \\
+            \hline
+            1          & 500          & 301.8           & 301.85             & -0.0153     \\
+            1          & 750          & 304.2           & 304.15             & 0.0152      \\
+            1          & 1000         & 306.5           & 306.46             & 0.0126      \\
+            2          & 500          & 303.7           & 303.66             & 0.0137      \\
+            2          & 750          & 308.2           & 308.23             & -0.0103     \\
+            2          & 1000         & 312.8           & 312.80             & -0.0016     \\
+            3          & 500          & 305.4           & 305.44             & -0.0125     \\
+            3          & 750          & 312.2           & 312.24             & -0.0114     \\
+            3          & 1000         & 319.0           & 319.03             & -0.0104     \\
+
+
+
+            \hline
+        \end{tabular}
+    \end{center}
+\end{figure}
+
+From the table, we notice that as the mass and initial temperature of the solid block increases, the final equilibrium temperature of the system increases. This makes intuitive sense based on the equation of heat energy $Q=mc\Delta T$ which shows that the heat energy produced by an object is directly proportional to the mass of the object times the change in temperature.
+
+\section{Conclusion}
+From this lab, we get that two systems that come in thermal contact with each other will eventually become in thermal equilibrium with each other. Furthermore, we get that the final temperature will be smaller or greater depending on the initial temperatures of the two systems. During this experiment we did not encounter any difficulties, however we gained a greater understanding of how to apply the rules of thermal energy and the zeroth law of thermal dynamics to predict the equilibrium temperature of a system.
+\end{document}
