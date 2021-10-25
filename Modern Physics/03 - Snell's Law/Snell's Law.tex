@@ -1,0 +1,244 @@
+\documentclass[12pt]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{pgf}
+\usepackage{pgfplots}
+\usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{textcomp}
+
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\usetikzlibrary{scopes}
+\usetikzlibrary{angles,quotes}
+\usetikzlibrary{calc}
+\graphicspath{ {/} }
+\pgfplotsset{compat=1.5}
+
+\newcommand*{\I}{\imath}
+\newcommand*{\J}{\jmath}
+\newcommand{\norm}[1]{\lvert #1 \rvert}
+
+\setlist[enumerate, 1]{label=\alph*.}
+
+\begin{document}
+\sisetup{per-mode=symbol}
+
+\begin{filecontents}{data1.csv}
+    X	             Y
+    0           0
+    0.173648178	0.241921896
+    0.342020143	0.469471563
+    0.406736643	0.559192903
+    0.656059029	0.866025404
+    0.64278761	0.933580426
+    };
+\end{filecontents}
+
+\begin{filecontents}{data2.csv}
+    X	      Y
+    0.000	0.000
+    0.225	0.292
+    0.276	0.375
+    0.375	0.530
+    0.515	0.682
+    0.755	1.000
+    };
+\end{filecontents}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        \textbf{Snell's Law}
+
+        \vspace{0.5cm}
+        Lab: 03
+
+        \vspace{1cm}
+
+        \textbf{Jaden Moore}
+
+        \vfill
+
+        Orange Coast College\\
+        Physics A285L\\
+        October 16th, 2021
+
+    \end{center}
+\end{titlepage}
+
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\lhead{Snell's Law}
+\rhead{Lab: 03}
+\cfoot{\thepage}
+
+\section{Introduction}
+In this lab, we measure the index of refraction of water by producing different light rays at various angles of incidence above and below a hemispherical container filled with water. We then measure the angle of incidence as it strikes the center to obtain the index of refraction of water and compare it to the universally accepted index of refraction of water.
+
+\section{Light Traveling from Air into Water}
+Consider a ray of light traveling from air into water. We measure the angle of incidence as the light strikes the center of the hemispherical container. We then calculate the index of refraction using Snell's Law. That is,
+
+\begin{equation}
+    \begin{split}
+        n_{air}sin(\theta_{air}) &= n_{water}sin(\theta_{water})
+    \end{split}
+\end{equation}
+
+But if we let $n_{air} = 1$, we get that
+
+\begin{equation}
+    \begin{split}
+        sin(\theta_{air}) &= n_{water}sin(\theta_{water})
+    \end{split}
+\end{equation}
+
+We note that Equation (2) resembles the form of a straight line. That is, in the form of $y=mx + b$. Thus, we can plot the $sin$ of the respective angles to obtain the experimental $n_{water}$ which is represented by the slope of the line.
+
+Below we put into a table to experimental angles of incidence obtained from the experiment for 6 different light rays.
+
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{figure}[H]
+    \begin{center}
+        \begin{tabular}{ P{2cm}| P{2.5cm} P{2.5cm} P{2.5cm} P{2.5cm} }
+            \hline
+            \multicolumn{5}{c}{Table 1: Angles of incidence and refraction of light traveling from air into water}                    \\
+
+            \hline
+                  & $\theta_{air} [\text{degrees}]$ & $sin(\theta_{air})$ & $\theta_{water} [\text{degrees}]$ & $sin(\theta_{water})$ \\
+            \hline
+            Ray 1 & 0                               & 0                   & 0                                 & 0                     \\
+            Ray 2 & 14                              & 0.241               & 10                                & 0.173                 \\
+            Ray 3 & 28                              & 0.469               & 20                                & 0.342                 \\
+            Ray 4 & 34                              & 0.559               & 24                                & 0.407                 \\
+            Ray 5 & 60                              & 0.866               & 41                                & 0.656                 \\
+            Ray 6 & 69                              & 0.933               & 40                                & 0.643                 \\
+
+            \hline
+        \end{tabular}
+    \end{center}
+\end{figure}
+
+We notice from the table that the $sin$ of each angle scales linearly. Thus, we can use a linear regression to plot the line of best fit. Below we plot the sin of the angle of incidence $sin(\theta_{air})$ on the y-axis and the sin of the angle of refraction $sin(\theta_{water})$ on the x-axis.
+
+\begin{figure}[H]
+    \centering
+
+    \caption[10pt]{Linear regression of $sin(\theta_{air})$ plotted over $sin(\theta_{water})$}
+
+    \begin{tikzpicture}
+        \pgfplotsset{width=9cm,
+            legend style={font=\footnotesize}}
+        \begin{axis}[
+                xlabel={$sin(\theta_{water}^{\circ})$},
+                xmin=0,
+                xmax=0.8,
+                ylabel={$sin(\theta_{air}^{\circ})$},
+                ymin=0,
+                ymax=1.6,
+                legend cell align = left,
+                legend pos = north east,
+            ]
+            \addplot[only marks] table[x=X,y=Y]{data1.csv};
+            \addplot[black,smooth, domain=0:0.7] {1.3829*x - 0.0003};
+            \addlegendimage{only marks}
+            \addlegendentry{data point}
+            \addlegendimage{no markers, red}
+            \addlegendentry{$y=1.3829x - 0.0003$}
+        \end{axis}
+    \end{tikzpicture}
+\end{figure}
+
+From Snell's Law, we can see that the slope of the line in Figure (1) is equivalent to the index of refraction of water since Snell's law takes the form of a line when $n_{air} = 1$ as seen in equation (2).
+
+We note that from the graph, experimentally we get that $n_{water} = 1.3829$. The universally accepted index of refraction of water is $1.33$. Thus, we can calculate the percent difference between the two such that
+
+\begin{equation}
+    \begin{split}
+        \text{percent difference} &= \frac{|n_{water-exp} - n_{water-accepted}|}{\frac{1}{2}(n_{water-exp} + n_{water-accepted})}100 \\
+        \text{percent difference} &= \frac{1.3829 - 1.33}{\frac{1}{2}(1.3829 + 1.33)}100 \\
+        \text{percent difference} &= 3.89 \%
+    \end{split}
+\end{equation}
+
+\section{Light Traveling from Water into Air}
+Now consider a light ray traveling from below, toward the center of the hemispherical container. In this case, we ensure the ray enters the container perpendicular to the surface such that the ray does not change angle entering the water. We can then measure the angle of incidence $\theta_{water}$ and the angle of refraction $\theta_{air}$.
+
+Below we put into a table, the recorded values for different rays of light entering the container.
+
+\begin{figure}[H]
+    \begin{center}
+        \begin{tabular}{ P{2cm}| P{2.5cm} P{2.5cm} P{2.5cm} P{2.5cm} }
+            \hline
+            \multicolumn{5}{c}{Table 2: Angles of incidence and refraction of light traveling from water into air}                    \\
+
+            \hline
+                  & $\theta_{air} [\text{degrees}]$ & $sin(\theta_{air})$ & $\theta_{water} [\text{degrees}]$ & $sin(\theta_{water})$ \\
+            \hline
+            Ray 1 & 0                               & 0                   & 0                                 & 0                     \\
+            Ray 2 & 17                              & 0.292               & 13                                & 0.225                 \\
+            Ray 3 & 22                              & 0.375               & 16                                & 0.276                 \\
+            Ray 4 & 32                              & 0.530               & 22                                & 0.375                 \\
+            Ray 5 & 43                              & 0.682               & 31                                & 0.515                 \\
+            Ray 6 & 90                              & 1.0                 & 49                                & 0.755                 \\
+
+            \hline
+        \end{tabular}
+    \end{center}
+\end{figure}
+
+From the table, we get the critical angle to be $49^{\circ}$ since the angle of refraction $\theta_{air}$ is $90^{\circ}$. We can then apply a linear regression to the data to find a line of best fit.
+
+\begin{figure}[H]
+    \centering
+
+    \caption[10pt]{Linear regression of $sin(\theta_{air})$ plotted over $sin(\theta_{water})$}
+
+    \begin{tikzpicture}
+        \pgfplotsset{width=9cm,
+            legend style={font=\footnotesize}}
+        \begin{axis}[
+                xlabel={$sin(\theta_{water}^{\circ})$},
+                xmin=0,
+                xmax=1,
+                ylabel={$sin(\theta_{air}^{\circ})$},
+                ymin=0,
+                ymax=1.6,
+                legend cell align = left,
+                legend pos = north east,
+            ]
+            \addplot[only marks] table[x=X,y=Y]{data2.csv};
+            \addplot[black,smooth, domain=0:0.8] {1.3265*x + 0.0056};
+            \addlegendimage{only marks}
+            \addlegendentry{data point}
+            \addlegendimage{no markers, red}
+            \addlegendentry{$y=1.3265x + 0.0056$}
+        \end{axis}
+    \end{tikzpicture}
+\end{figure}
+
+From the Figure (2) we get the slope of the linear fit to be $1.3265$. From Snell's Law, we can see that the slope is equivalent to the measured index of refraction of water $n_{water}$. That is, experimentally we get that $n_{water-exp} = 1.3265$. The universally accepted value for the index of refraction of water is $1.33$. From Equation (2), we can calculate the percent difference between the two such that,
+
+\begin{equation*}
+    \begin{split}
+        \text{percent difference} &= \frac{|1.3265 - 1.33|}{\frac{1}{2}(1.3265 + 1.33)}100 \\
+        \text{percent difference} &= 0.264 \%
+    \end{split}
+\end{equation*}
+
+\section{Conclusion}
+From this lab, we get that we can calculate the index of refraction of water by pointing various rays of light at the center of a hemispherical circle at different angles of incidence. We obtained experimental values for the refractive index with a percent difference of within 5\% which indicates that the experiment was successful. In this lab, we gained a greater understanding of one method that scientists may use to measure the refractive index of particular mediums in general.
+\end{document}

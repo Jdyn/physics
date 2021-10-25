@@ -60,7 +60,7 @@
 In this lab, we measure the final temperature of a system consisting of a hot solid submerged in cold water after reaching thermal equilibrium. We then compare the experimental equilibrium temperature with the theoretical temperature to obtain a percent error between the two.
 
 \section{Calorimetry}
-Consider the experiment provided by Physlet\textregistered \space Physics Exploration 19.3: Calorimetry. Recall that when two systems at different temperatures come in thermal contact, they will eventually become equal in temperature. That is, the heat lost by the solid block is equal to the heat gained by the water since thermal energy travels from hot to cold. Thus, the theoretical temperature can be calculated such that,
+Consider the experiment provided by Physlet\textregistered \space Physics Exploration 19.3: Calorimetry. We know that when two systems at different temperatures come in thermal contact, they will eventually become equal in temperature. That is, the heat lost by the solid block is equal to the heat gained by the water since thermal energy travels from hot to cold. Thus, the theoretical temperature can be calculated such that,
 
 \begin{equation}
     \begin{split}
@@ -68,7 +68,7 @@ Consider the experiment provided by Physlet\textregistered \space Physics Explor
     \end{split}
 \end{equation}
 
-Where $m_w$, $m_b$ is the mass of the water and block respectively; $c_w$, $b_w$ is the specific heat capacity of water and block respectively; and $T_{iw}$, $T_{ib}$ is the initial temperature of the water and block respectively.
+Where $m_w$, $m_b$ is the mass of the water and block respectively; $c_w$, $c_b$ is the specific heat capacity of water and block respectively; and $T_{iw}$, $T_{ib}$ is the initial temperature of the water and block respectively.
 
 From this we can calculate the theoretical equilibrium temperature $T_f$. For example, for a system consisting of $m_b=\SI{1}{kg}$, $m_w=\SI{10}{kg}$, $T_{ib}=\SI{500}{K}$, and $T_{iw}=\SI{300}{K}$. We get that,
 
@@ -83,13 +83,13 @@ We then calculate the percent error between the experimental temperature gathere
 
 \begin{equation}
     \begin{split}
-        \text{percent error} &= \left( \frac{T_{f-exp} - T_{f-theory}}{T_{f_theory}} \right) 100 \\
-        \text{percent error} &= \SI{-0.0153
+        \text{\% error} &= \left( \frac{T_{f-exp} - T_{f-theory}}{T_{f_theory}} \right) 100 \\
+        \text{\% error} &= \SI{-0.0153
         }{\percent}
     \end{split}
 \end{equation}
 
-Using the approach above, we put into a table below, the experimental equilibrium temperatures from multiple experiments along with the corresponding theoretical temperatures and percent error between the two.
+Using the approach above, we put into a table below, the experimental equilibrium temperatures for various masses along with the corresponding theoretical temperatures and percent errors between the two.
 
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 
@@ -103,7 +103,8 @@ Using the approach above, we put into a table below, the experimental equilibriu
             \multicolumn{5}{c}{Table 1: Equilibrium Temperatures at different masses of the solid block} \\
             
             \hline
-            $m_b [kg]$ & $T_{ib} [K]$ & $T_{f-exp} [K]$ & $T_{f-theory} [K]$ & $ \% error$ \\
+            $m_b [kg]$ & $T_{ib} [K]$ & $T_{f-exp} [K]$ & $T_{f-theory} [K]$ & 
+            \% error $[\%]$ \\
             \hline
             1          & 500          & 301.8           & 301.85             & -0.0153     \\
             1          & 750          & 304.2           & 304.15             & 0.0152      \\
@@ -125,5 +126,7 @@ Using the approach above, we put into a table below, the experimental equilibriu
 From the table, we notice that as the mass and initial temperature of the solid block increases, the final equilibrium temperature of the system increases. This makes intuitive sense based on the equation of heat energy $Q=mc\Delta T$ which shows that the heat energy produced by an object is directly proportional to the mass of the object times the change in temperature.
 
 \section{Conclusion}
-From this lab, we get that two systems that come in thermal contact with each other will eventually become in thermal equilibrium with each other. Furthermore, we get that the final temperature will be smaller or greater depending on the initial temperatures of the two systems. During this experiment we did not encounter any difficulties, however we gained a greater understanding of how to apply the rules of thermal energy and the zeroth law of thermal dynamics to predict the equilibrium temperature of a system.
+From this lab, we get that two systems that come in thermal contact with each other will eventually become in thermal equilibrium with each other. Furthermore, we get that the final temperature will be smaller or greater depending on the initial temperatures of the two systems. 
+
+We notice that the percent error between the experimental temperatures and theoretical temperatures are very small such that it is less than 1\%. Therefore, we can conclude that the results of the experiment are accurate since the results are very close to theory. During this experiment we did not encounter any difficulties, however we gained a greater understanding of how to apply the rules of thermal energy and the zeroth law of thermal dynamics to predict the equilibrium temperature of a system.
 \end{document}
