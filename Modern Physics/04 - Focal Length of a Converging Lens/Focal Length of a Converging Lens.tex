@@ -1,0 +1,185 @@
+
+\documentclass[12pt]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{pgf}
+\usepackage{pgfplots}
+\usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{textcomp}
+
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\usetikzlibrary{scopes}
+\usetikzlibrary{angles,quotes}
+\usetikzlibrary{calc}
+\graphicspath{ {/} }
+\pgfplotsset{compat=1.5}
+
+\newcommand*{\I}{\imath}
+\newcommand*{\J}{\jmath}
+\newcommand{\norm}[1]{\lvert #1 \rvert}
+
+\setlist[enumerate, 1]{label=\alph*.}
+
+\begin{document}
+\sisetup{per-mode=symbol}
+
+\begin{filecontents}{data1.csv}
+    X	      Y
+    0.74	1.54
+    0.82	1.28
+    0.94	1.06
+    1.14	0.89
+    1.24	0.83
+    1.38	0.78
+    1.58	0.73
+    1.83	0.68
+    2.1 	0.65
+    2.3 	0.63
+    };
+\end{filecontents}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        \textbf{Focal Length of a Converging Lens}
+
+        \vspace{0.5cm}
+        Lab: 04
+
+        \vspace{1cm}
+
+        \textbf{Jaden Moore}
+
+        \vfill
+
+        Orange Coast College\\
+        Physics A285L\\
+        October 25th, 2021
+
+    \end{center}
+\end{titlepage}
+
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\lhead{Focal Length of a Converging Lens}
+\rhead{Lab: 04}
+\cfoot{\thepage}
+
+\section{Introduction}
+In this lab, we measure the focal length of a converging lens by placing an object at various distances away from a lens and recording the distance of from the lens to the object's image. We then compare the experimental value of the focal length of the mirror to the theoretical value to obtain a percent error between the two.
+
+\section{Focal Length of a Converging Lens}
+Consider the experiment provided by Physlet\textregistered \space Physics Illustration 35.1: Lenses and the Thin-Lens Approximation. We begin by placing a converging lens at $x=2.5cm$ in the simulation. We can calculate the focal length of the lens such that
+
+\begin{equation}
+    \begin{split}
+        \frac{1}{f} &= \frac{1}{s} + \frac{1}{s^\prime}
+    \end{split}
+\end{equation}
+
+However, if we consider the lens when the image distance is equal to the object distance, that is $s = s^\prime$, we can then calculate the focal length such that
+
+\begin{equation}
+    \begin{split}
+        \frac{1}{f} &= \frac{1}{s} + \frac{1}{s} \\
+        \frac{1}{f} &= \frac{2}{s} \\
+        f &= \frac{1}{2} s
+    \end{split}
+\end{equation}
+
+We then place an object at various distances to the left of the converging lens and record the distance from the object to the lens and the distance from the image to the lens. Below we put into a table the recorded distances of the object and image. We set the theoretical value of the focal length to be $f=5cm$
+
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.2}
+
+\begin{figure}[H]
+    \begin{center}
+        \begin{tabular}{ P{1.5cm}| P{5cm} P{5cm} }
+            \hline
+            \multicolumn{3}{c}{Table 1: Recorded image and object distances from lens}        \\
+
+            \hline
+            Trial & $\text{Object Distance } s [cm]$ & $\text{Image Distance } s^\prime [cm]$ \\
+            \hline
+            1     & 0.74                             & 1.54                                   \\
+            2     & 0.82                             & 1.28                                   \\
+            3     & 0.94                             & 1.06                                   \\
+            4     & 1.14                             & 0.89                                   \\
+            5     & 1.24                             & 0.83                                   \\
+            6     & 1.38                             & 0.78                                   \\
+            7     & 1.58                             & 0.73                                   \\
+            8     & 1.83                             & 0.68                                   \\
+            9     & 2.1                              & 0.65                                   \\
+            10    & 2.3                              & 0.63                                   \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{figure}
+
+We notice from the table that as object distance increases, image distance decreases. Thus, we can apply a power fit to identify the line of best fit of the data. Once we identify the line of best fit, we can locate the value in which the image and object distance is the same by considering the intersection point between the function $y=x$ and the graph since the slope is 1.
+
+Below we put into a graph the data along with the power regression line and the function $y=x$.
+
+\begin{figure}[H]
+    \centering
+
+    \caption[10pt]{Power fit of image distance plotted over object distance}
+
+    \begin{tikzpicture}
+        \pgfplotsset{width=9cm,
+            legend style={font=\footnotesize}}
+        \begin{axis}[
+                xlabel={$\text{object distance } [cm]$},
+                xmin=0,
+                xmax=3,
+                ylabel={$\text{image distance } [cm]$},
+                ymin=0,
+                ymax=2,
+                legend cell align = left,
+                legend pos = north east,
+            ]
+            \addplot[only marks] table[x=X,y=Y]{data1.csv};
+            \addplot[black,smooth, domain=0.6:2.4] {1.0646*x^-0.741};
+            \addplot[red,smooth, domain=0:1.3] {x};
+            \addlegendimage{only marks}
+            \addlegendentry{data point}
+            \addlegendimage{no markers, black}
+            \addlegendentry{$y=1.0646x^{-0.741}$}
+            \addlegendimage{no markers, red}
+            \addlegendentry{$y=x$}
+        \end{axis}
+    \end{tikzpicture}
+\end{figure}
+
+From Figure (1), we can see that at the point where the function $y=x$ intersects the power fit, the object distance and the image distance is the same. Thus, from Figure (1), we get that the two values are the same at $s=s^\prime=1.037cm$ away from the lens. From Equation (2), we can calculate the experimental focal distance of the lens, that is
+
+\begin{equation}
+    \begin{split}
+        f_{exp} &= \frac{1}{2} s = \frac{1.037cm}{2} = 0.5185cm \\
+    \end{split}
+\end{equation}
+
+From this, we can calculate the percent error between the experimental focal length and the theoretical focal length such that
+
+\begin{equation}
+    \begin{split}
+        \text{\% error} &= \left( \frac{f_{exp} - f_{theory}}{f_{theory}} \right) 100 = \left( \frac{0.5185cm - 5cm}{5cm} \right) 100 = \SI{3.70}{\percent} \\
+    \end{split}
+\end{equation}
+
+\section{Conclusion}
+From this lab, we get that the focal length of a lens can be experimentally calculated by placing an object at various distances, and measuring the distance of the projected image and object to the lens. In this case, we obtain an experimental value with a percent error of 3.7\% which indicates the experiment was a success. In this lab, we gain a greater understanding of how focal lengths are calculated and how the projected image acts as an object moves relative to a lens.
+\end{document}
