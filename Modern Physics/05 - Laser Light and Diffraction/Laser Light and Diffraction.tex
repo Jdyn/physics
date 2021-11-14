@@ -1,0 +1,130 @@
+\documentclass[12pt]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{pgf}
+\usepackage{pgfplots}
+\usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{textcomp}
+
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\usetikzlibrary{scopes}
+\usetikzlibrary{angles,quotes}
+\usetikzlibrary{calc}
+\graphicspath{ {/} }
+\pgfplotsset{compat=1.5}
+
+\newcommand*{\I}{\imath}
+\newcommand*{\J}{\jmath}
+\newcommand{\norm}[1]{\lvert #1 \rvert}
+
+\setlist[enumerate, 1]{label=\alph*.}
+
+\begin{document}
+\sisetup{per-mode=symbol}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        \textbf{Laser Light and Diffraction}
+
+        \vspace{0.5cm}
+        Lab: 05
+
+        \vspace{1cm}
+
+        \textbf{Jaden Moore}
+
+        \vfill
+
+        Orange Coast College\\
+        Physics A285L\\
+        November 12th, 2021
+
+    \end{center}
+\end{titlepage}
+
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\lhead{Laser Light and Diffraction}
+\rhead{Lab: 05}
+\cfoot{\thepage}
+
+\section{Introduction}
+In this lab, we measure the wavelength of a helium-neon laser beam by analyzing the diffraction pattern as the laser travels through a very small single slit. We then consider the diffraction pattern as the laser travels around a very thin hair, and then measure the width of the hair based on the projected diffraction pattern.
+
+\section{Diffraction Due To A Single Slit}
+Consider a laser beam traveling through a single slit of width $a$ such that the light diffracts on a screen $R$ cm away. We can measure the wavelength $\lambda$ of the laser such that
+\begin{equation}
+    \begin{split}
+        \lambda_{exp} &= \frac{a (\Delta x)_{avg}}{R}
+    \end{split}
+\end{equation}
+Where $\Delta x_{avg}$ is the average distance between each dark spot in the diffraction pattern. From the experiment, we get the position of the dark spots on the diffraction pattern to be
+
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{figure}[H]
+    \begin{center}
+        \begin{tabular}{ P{1cm}|P{1cm}|P{1cm}|P{1cm}|P{1cm}|P{1cm}|P{1cm}|P{1cm}|P{1cm}|P{1cm}|P{1cm} }
+            \hline
+            \multicolumn{11}{c}{Table 1: Recorded distances between dark spots from a slit}        \\
+            \hline
+            $\Delta x$ (cm) &0.70	&0.75&	0.72&	0.71&	0.80	&0.80	&0.70	&0.69&	0.70&	0.75 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{figure}
+From this, we get that get the average value of $\Delta x$ to be $\SI{0.732}{cm}$. If we let the width of the slit be $a=\SI{120}{\micro\meter}$ and the distance from the slit to the screen $R=\SI{138.1}{cm}$, we can calculate an experimental value for the wavelength of the laser from Equation (1) such that
+
+\begin{equation}
+    \begin{split}
+        \lambda_{exp} &= \frac{(120x10^{-4}cm)(0.732cm)}{138.1cm} = \SI{636.06}{\nano\meter}
+    \end{split}
+\end{equation}
+
+The theoretical value for the wavelength of a Helium-Neon Laser is accepted to be $\lambda_{theory}=\SI{632.8}{\nano\meter}$. Thus, we can calculate the percent error between the two such that
+
+\begin{equation}
+    \begin{split}
+        \text{\% error} &= \left( \frac{\lambda_{exp} - \lambda_{theory}}{\lambda_{theory}} \right) 100 = \left( \frac{636.06nm - 632.8nm}{632.8nm} \right) 100 = \SI{0.515}{\percent} \\
+    \end{split}
+\end{equation}
+
+\section{Diffraction Due To A Single Hair}
+Now consider a laser beam traveling toward a very thin hair such that the light does not go through the hair, but gets diffracted around the hair. In this case, we measure the distance between each dark spot such that
+\renewcommand{\arraystretch}{1.2}
+\begin{figure}[H]
+    \begin{center}
+        \begin{tabular}{ P{1cm}|P{1cm}|P{1cm}|P{1cm}|P{1cm}|P{1cm}|P{1cm}|P{1cm}|P{1cm}|P{1cm}|P{1cm} }
+            \hline
+            \multicolumn{11}{c}{Table 2: Recorded distances between dark spots from a hair}        \\
+            \hline
+            $\Delta x$ (cm) &1.05	&1.10&	1.05&	1.09&	1.125	&1.125	&1.12	&1.01&	1.19&	1.10 \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{figure}
+From this, we get that the average value of $\Delta x_{avg}=\SI{1.096}{cm}$. We note that the diffraction pattern produced by the hair is equivalent to the diffraction pattern produced by the single slit. Using the theoretical value of the wavelength of the laser $\lambda=632.8cm$ and the distance between the hair and the screen $R=138.1cm$, we get the width of the hair $a$ to be
+
+\begin{equation}
+    \begin{split}
+        a_{hair} &=\frac{\lambda_{theory} R}{\Delta x_{avg}}= \frac{(632.8x10^{-7}cm)(138.1cm)}{1.096cm} = \SI{79.7}{\micro\meter}
+    \end{split}
+\end{equation}
+
+\section{Conclusion}
+From this lab, we get that we can calculate the wavelength of light from the diffraction pattern as it travels through a small slit. Furthermore, we can calculate the width of a hair from the diffraction pattern as light travels around the hair. We also note that the diffraction pattern generated by a single hair and a single slit is the same. We calculated the wavelength of the laser with a percent error of less than 1\%, thus the experiment was a success. The biggest takeaway from the lab is a better understanding of light diffraction and how it can be used to measure very small lengths.
+
+\end{document}
