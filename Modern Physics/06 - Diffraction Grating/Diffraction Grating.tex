@@ -1,0 +1,152 @@
+\documentclass[12pt]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{pgf}
+\usepackage{pgfplots}
+\usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{textcomp}
+
+\usepackage[font=small,labelfont=bf]{caption}
+
+\usetikzlibrary{scopes}
+\usetikzlibrary{angles,quotes}
+\usetikzlibrary{calc}
+\graphicspath{ {/} }
+\pgfplotsset{compat=1.5}
+
+\newcommand*{\I}{\imath}
+\newcommand*{\J}{\jmath}
+\newcommand{\norm}[1]{\lvert #1 \rvert}
+
+\setlist[enumerate, 1]{label=\alph*.}
+
+\begin{document}
+\sisetup{per-mode=symbol}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        \textbf{Diffraction Grating}
+
+        \vspace{0.5cm}
+        Lab: 06
+
+        \vspace{1cm}
+
+        \textbf{Jaden Moore}
+
+        \vfill
+
+        Orange Coast College\\
+        Physics A285L\\
+        November 14th, 2021
+
+    \end{center}
+\end{titlepage}
+
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{15pt}
+\lhead{Diffraction Grating}
+\rhead{Lab: 06}
+\cfoot{\thepage}
+
+\section{Introduction}
+In this lab, we measure the distance between the slits on a diffraction grating glass slide by analyzing the diffraction pattern projected onto a screen and compare it to the theoretical value. We then experimentally measure the distance between bright spots and the central bright maxima and compare it to the theoretical values.
+
+\section{The Spacing for a Diffraction Grating}
+Consider the experiment provided by Physlet\textregistered \space Physics Exploration 38.2: Diffraction Grating. The location of the intensity maxima on a screen created by any diffraction grating is calculated such that
+
+\begin{equation}
+    \begin{split}
+        dsin(\theta) &= m \lambda_{light}
+    \end{split}
+\end{equation}
+Where $d$ is the distance between adjacent slits. We set the experiment up such that the distance between slits is $d_{theory}=\SI{3663}{nm}$. That is, there are 273 slits per millimeter. Thus, we can experimentally calculate the distance between slits such that
+
+\begin{equation}
+    \begin{split}
+        d &= \frac{m \lambda_{light}}{sin(\theta)}
+    \end{split}
+\end{equation}
+
+Where m = 1,2. Below we put into a table the experimental data gathered from different wavelengths of light.
+
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.2}
+
+\begin{figure}[H]
+    \begin{center}
+        \begin{tabular}{ P{2cm} P{2cm} P{2cm} P{2cm} P{2cm} P{2cm} }
+            \hline
+            \multicolumn{6}{c}{Table 1: Diffraction Pattern Data}        \\
+
+            \hline
+            $\lambda$ [nm] & $\theta_1$ [$^\circ$] & $\theta_2$ [$^\circ$] & $d_1$ [nm] & $d_2$ [nm] & $d_{avg}$ [nm] \\
+            \hline
+            589     & 9.2                             & 18.8 &      3683.99    &    3655.37 & 3669.68                   \\
+            505     & 8.0                             & 16.0 &     3628.58     & 3664.24 & 3646.405                      \\
+            470     & 7.3                             & 15.0 &    3649.19 & 3631.88 & 3640.54                         \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{figure}
+
+Thus, we can calculate $d_{exp}$ by taking the average of the $d_{avg}$ values for each wavelength in Table 1. That is,
+
+\begin{equation}
+    \begin{split}
+        d_{exp} &= \frac{3669.68 + 3646.41 + 3640.54}{3} = \SI{3652.21}{nm}
+    \end{split}
+\end{equation}
+
+We can then calculate the percent error between the theoretical distance $d_{theory}$ and the experimental value such that
+
+\begin{equation}
+    \begin{split}
+        \text{\% error} &= \left( \frac{d_{exp} - d_{theory}}{d_{theory}} \right) 100 = \left( \frac{3652.21nm - 3663nm}{3663nm} \right) 100 = \SI{0.295}{\percent} \\
+    \end{split}
+\end{equation}
+
+\section{Measuring the Location of the Diffraction Maxima}
+From the experiment, we can calculate the distance between the central bright maxima and any other diffraction maxima that corresponds to the $mth$ bright fringe. If we let $x$ be the distance from the middle grating to the central bright maximum, we can calculate the distance such that
+
+\begin{equation}
+    \begin{split}
+        y_m &= xtan(\theta_m) \\
+    \end{split}
+\end{equation}
+
+Using the previous case of yellow light where $\lambda = 589$nm, and taking the distance between the grating and the screen $x=500$cm. We can compare the theoretical distances $y_m$ to the experimental distances. Below we into a table the locations of the diffraction maxima for yellow light.
+
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.2}
+
+\begin{figure}[H]
+    \begin{center}
+        \begin{tabular}{ P{2cm} P{2cm} P{2cm} P{2cm} P{2cm} P{2cm} }
+            \hline
+            \multicolumn{6}{c}{Table 1: Diffraction Pattern Data}        \\
+
+            \hline
+            $x$ [cm] & m & $\theta_m$ [$^\circ$] & $y_{m-theory}$ [cm] & $y_{m-exp}$ [cm] & $\%$ error \\
+            \hline
+            500     & 2                             & 9.2 &      82.774    &    3655.37 & 3669.68                   \\
+            500     & 1                             & 18.8 &     3628.58     & 3664.24 & 3646.405                      \\
+            500     & -1                             & 9.4 &    3649.19 & 3631.88 & 3640.54                         \\
+            500     & -2                            & 18.8 &    3649.19 & 3631.88 & 3640.54                         \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{figure}
+
+\end{document}
