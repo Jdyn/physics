@@ -86,16 +86,16 @@ Where m = 1,2. Below we put into a table the experimental data gathered from dif
 
 \begin{figure}[H]
     \begin{center}
-        \begin{tabular}{ P{2cm} P{2cm} P{2cm} P{2cm} P{2cm} P{2cm} }
+        \begin{tabular}{ P{2cm}| P{2cm} P{2cm} P{2cm} P{2cm} P{2cm} }
             \hline
-            \multicolumn{6}{c}{Table 1: Diffraction Pattern Data}        \\
+            \multicolumn{6}{c}{Table 1: Diffraction Pattern Data}                                                                     \\
 
             \hline
-            $\lambda$ [nm] & $\theta_1$ [$^\circ$] & $\theta_2$ [$^\circ$] & $d_1$ [nm] & $d_2$ [nm] & $d_{avg}$ [nm] \\
+            $\lambda$ [nm] & $\theta_{m=1}$ [$^\circ$] & $\theta_{m=2}$ [$^\circ$] & $d_{m=1}$ [nm] & $d_{m=2}$ [nm] & $d_{avg}$ [nm] \\
             \hline
-            589     & 9.2                             & 18.8 &      3683.99    &    3655.37 & 3669.68                   \\
-            505     & 8.0                             & 16.0 &     3628.58     & 3664.24 & 3646.405                      \\
-            470     & 7.3                             & 15.0 &    3649.19 & 3631.88 & 3640.54                         \\
+            589            & 9.2                       & 18.4                      & 3683.99        & 3655.37        & 3669.68        \\
+            505            & 8.0                       & 16.0                      & 3628.58        & 3664.24        & 3646.41        \\
+            470            & 7.3                       & 15.0                      & 3649.19        & 3631.88        & 3640.54        \\
             \hline
         \end{tabular}
     \end{center}
@@ -117,6 +117,8 @@ We can then calculate the percent error between the theoretical distance $d_{the
     \end{split}
 \end{equation}
 
+In this case, the percent error indicates that the experimental value is within 1\% of the theoretical value which shows that the experiment is relatively accurate.
+
 \section{Measuring the Location of the Diffraction Maxima}
 From the experiment, we can calculate the distance between the central bright maxima and any other diffraction maxima that corresponds to the $mth$ bright fringe. If we let $x$ be the distance from the middle grating to the central bright maximum, we can calculate the distance such that
 
@@ -126,7 +128,7 @@ From the experiment, we can calculate the distance between the central bright ma
     \end{split}
 \end{equation}
 
-Using the previous case of yellow light where $\lambda = 589$nm, and taking the distance between the grating and the screen $x=500$cm. We can compare the theoretical distances $y_m$ to the experimental distances. Below we into a table the locations of the diffraction maxima for yellow light.
+Using the previous case of yellow light where $\lambda = 589$nm, and taking the distance between the grating and the screen $x=500$cm. We can compare the theoretical distances $y_m$ to the experimental distances to obtain a percent error between the two. We can calculate the experimental values by simply measuring the distance between the central bright maxima and the $mth$ maxima in the experiment. Below we into a table the locations of the diffraction maxima for yellow light.
 
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.2}
@@ -135,18 +137,20 @@ Using the previous case of yellow light where $\lambda = 589$nm, and taking the 
     \begin{center}
         \begin{tabular}{ P{2cm} P{2cm} P{2cm} P{2cm} P{2cm} P{2cm} }
             \hline
-            \multicolumn{6}{c}{Table 1: Diffraction Pattern Data}        \\
+            \multicolumn{6}{c}{Table 2: Location of Diffraction Maxima for Yellow Light (589nm) }               \\
 
             \hline
-            $x$ [cm] & m & $\theta_m$ [$^\circ$] & $y_{m-theory}$ [cm] & $y_{m-exp}$ [cm] & $\%$ error \\
+            $x$ [cm] & m  & $\theta_m$ [$^\circ$] & $y_{m-theory}$ [cm] & $y_{m-exp}$ [cm] & $\%$ error \\
             \hline
-            500     & 2                             & 9.2 &      82.774    &    3655.37 & 3669.68                   \\
-            500     & 1                             & 18.8 &     3628.58     & 3664.24 & 3646.405                      \\
-            500     & -1                             & 9.4 &    3649.19 & 3631.88 & 3640.54                         \\
-            500     & -2                            & 18.8 &    3649.19 & 3631.88 & 3640.54                         \\
+            500      & 2  & 18.4                  & 170.21              & 171              & 0.462      \\
+            500      & 1  & 9.2                   & 80.98               & 81               & 0.022      \\
+            500      & -1 & 9.2                   & 80.98               & 81               & 0.022      \\
+            500      & -2 & 18.4                  & 170.21              & 170              & 0.125      \\
             \hline
         \end{tabular}
     \end{center}
 \end{figure}
-
+(1) In this case, we get that the percent error was within 1\% of the theoretical values. (2) Additionally, if the frequency of the light is decreased, the position of the maxima relative to the central axis decreases.
+\section{Conclusion}
+In this lab, we get that the distance between adjacent slits on a glass grating can be calculated by analyzing the diffraction pattern projected onto a screen by the grating slide. Using this method, we are able to calculate the distance within 1\% of the theoretical value, which indicates the experiment was a success. Furthermore, the pattern projected onto the screen was consistent with what theory predicted the pattern to be. That is, the distance between the central bright and any $mth$ diffraction maxima was equivalent to $y_m = xtan(\theta_m)$ within 0.5\% error. The biggest takeaway was gaining a better understanding of how the theory can be applied to and is consistent with real world phenomena.
 \end{document}
