@@ -60,5 +60,114 @@
 \cfoot{\thepage}
 
 \section{Introduction}
+In this lab, we analyze the emission spectra of sodium and hydrogen. We then compare the experimental wavelengths produced by the elements using a spectrometer to their theoretical values to obtain a percent error between the two.
+
+\section{Measuring the wavelength of Sodium Light Source}
+Given a diffraction grating of 600 slits per mm we can calculate the distance between each slit such that
+
+\begin{equation}
+    \begin{split}
+        \text{d} = \frac{1}{\text{slits per mm}} = \frac{1}{600} = \SI{1667}{nm}
+    \end{split}
+\end{equation}
+
+From the experiment, we see two yellow lines a distance away from the central bright maximum. We then measure the two angles between the yellow lines and the central bright maximum. We can calculate the wavelength of the light from the equation
+
+\begin{equation}
+    \begin{split}
+        \lambda = \frac{dsin\theta}{m}
+    \end{split}
+\end{equation}
+
+Below we put into a table the measured angles and then calculate an experimental wavelength for the light.
+
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\setlength{\tabcolsep}{1pt}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{figure}[H]
+    \begin{center}
+        \begin{tabular}{ P{5cm} P{5cm} }
+            \hline
+            \multicolumn{2}{c}{Table 1: Sodium wavelength results for $m=1$} \\
+
+            \hline
+                   Angle $\theta$ [deg] & Wavelength $\lambda$ [nm] \\
+            \hline
+            20.71 &  589.514        \\
+            20.69 & 588.970         \\
+
+            \hline
+        \end{tabular}
+    \end{center}
+\end{figure}
+
+We can then calculate the doublet width $\Delta \lambda$ such that
+
+\begin{equation}
+    \begin{split}
+        \Delta \lambda = |\lambda_1 - \lambda_2| = 589.514 - 588.970 = \SI{0.5443}{nm}
+    \end{split}
+\end{equation}
+
+From the lab, we get that the difference in energy between the two doublets is calculated from the formula
+
+\begin{equation}
+    \begin{split}
+        \Delta E = h\left(v_2 - v_1\right) = hc\left(\frac{1}{\lambda_2} - \frac{1}{\lambda_1}\right)
+    \end{split}
+\end{equation}
+
+Where $h$ is Planck's constant and $c$ is the speed of the light. Using Equation (3) we get the difference in energy to be 
+
+\begin{equation}
+    \begin{split}
+        \Delta E = (\SI{4.136}{x10^{-15} \electronvolt\second})(\SI{3.0}{x10^8 \meter\per\second})\left( \frac{1}{\SI{5.8897}{x10^{-7}m}} - \frac{1}{\SI{5.8951}{x10^{-7}m}}\right) = \SI{1.930}{x10^{-3}\electronvolt}
+    \end{split}
+\end{equation}
+
+We can then calculate the magnetic field seen by the electron. That is,
+
+\begin{equation}
+    \begin{split}
+        B = \frac{\Delta E}{g\mu_b} = \frac{\SI{1.930}{x10^{-3}}}{2(\SI{5.798}{x10^{-5}})} = \SI{16.64}{\tesla}
+    \end{split}
+\end{equation}
+
+In this case, we notice that the magnetic field generated is 16.64T which is much larger than that of a magnetic resonance imaging machine which is around $\SI{1}{T}$
+
+\section{Measuring the Spectrum of Hydrogen}
+Now we consider the spectra produced by a hydrogen atom. Using the angles created from the colored bands to the central bright maximum, we can then calculate the wavelength of the light from Equation (2) and obtain a percent error between the experimental and theoretical values. We can calculate the percent error between the two wavelengths such that
+
+\begin{equation}
+    \begin{split}
+        \text{\% error} &= \left( \frac{\lambda_{exp} - \lambda_{theory}}{\lambda_{theory}} \right) 100 \\
+    \end{split}
+\end{equation}
+Below we put into a table the results from the hydrogen spectra.
+
+\setlength{\tabcolsep}{1pt}
+\renewcommand{\arraystretch}{1.25}
+
+\begin{figure}[H]
+    \begin{center}
+        \begin{tabular}{ P{3.5cm} P{3.5cm} P{3.5cm} P{3.5cm} }
+            \hline
+            \multicolumn{4}{c}{Table 1: Hydrogen wavelength results for $m=1$} \\
+
+            \hline
+                color & Angle $\theta$ [deg] & Wavelength $\lambda$ [nm] & $\%$ error \\
+            \hline
+            Red &  23.10  & 654.025 &  0.346  \\
+            Aqua & 16.95  & 485.992 & 0.022  \\
+            Blue & 15.09   & 433.980  & 0.004  \\
+            Violet & 14.24  & 410.056 & 0.035   \\
+            Ultra Violet & 13.77 & 396.787 & 0.054  \\
+
+            \hline
+        \end{tabular}
+    \end{center}
+\end{figure}
 
 \end{document}
