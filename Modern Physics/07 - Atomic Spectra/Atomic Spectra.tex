@@ -60,7 +60,7 @@
 \cfoot{\thepage}
 
 \section{Introduction}
-In this lab, we analyze the emission spectra of sodium and hydrogen. We then compare the experimental wavelengths produced by the elements using a spectrometer to their theoretical values to obtain a percent error between the two.
+In this lab, we analyze the lighted emitted by sodium and hydrogen as it enters through a diffraction grating. We can then use various tools and diffraction grating techniques to obtain an experimental wavelength for the light and compare it to the theoretical values to obtain a percent error between the two.
 
 \section{Measuring the wavelength of Sodium Light Source}
 Given a diffraction grating of 600 slits per mm we can calculate the distance between each slit such that
@@ -71,7 +71,7 @@ Given a diffraction grating of 600 slits per mm we can calculate the distance be
     \end{split}
 \end{equation}
 
-From the experiment, we see two yellow lines a distance away from the central bright maximum. We then measure the two angles between the yellow lines and the central bright maximum. We can calculate the wavelength of the light from the equation
+From the experiment, we see two yellow lines a distance away from the central bright maximum. We can then measure the two angles between the yellow lines and the central bright maximum. From this, we obtain the wavelength of the incoming light using the following formula,
 
 \begin{equation}
     \begin{split}
@@ -79,7 +79,7 @@ From the experiment, we see two yellow lines a distance away from the central br
     \end{split}
 \end{equation}
 
-Below we put into a table the measured angles and then calculate an experimental wavelength for the light.
+Below we put into a table the measured angles from the 1st order bright spot where $m=1$ and then calculate the experimental wavelength for the light using Equation (2).
 
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 
@@ -93,21 +93,21 @@ Below we put into a table the measured angles and then calculate an experimental
             \multicolumn{2}{c}{Table 1: Sodium wavelength results for $m=1$} \\
 
             \hline
-                   Angle $\theta$ [deg] & Wavelength $\lambda$ [nm] \\
+            Angle $\theta$ [deg] & Wavelength $\lambda$ [nm]                 \\
             \hline
-            20.71 &  589.514        \\
-            20.69 & 588.970         \\
+            20.71                & 589.514                                   \\
+            20.69                & 588.970                                   \\
 
             \hline
         \end{tabular}
     \end{center}
 \end{figure}
 
-We can then calculate the doublet width $\Delta \lambda$ such that
+Using Table (1), we can then calculate the doublet width $\Delta \lambda$ such that
 
 \begin{equation}
     \begin{split}
-        \Delta \lambda = |\lambda_1 - \lambda_2| = 589.514 - 588.970 = \SI{0.5443}{nm}
+        \Delta \lambda = |\lambda_1 - \lambda_2| = 589.514 - 588.970 = \SI{0.544}{nm}
     \end{split}
 \end{equation}
 
@@ -119,14 +119,13 @@ From the lab, we get that the difference in energy between the two doublets is c
     \end{split}
 \end{equation}
 
-Where $h$ is Planck's constant and $c$ is the speed of the light. Using Equation (3) we get the difference in energy to be 
+Where $h$ is Planck's constant and $c$ is the speed of the light. Using Equation (3) we get the difference in energy to be
 
 \begin{equation}
     \begin{split}
         \Delta E = (\SI{4.136}{x10^{-15} \electronvolt\second})(\SI{3.0}{x10^8 \meter\per\second})\left( \frac{1}{\SI{5.8897}{x10^{-7}m}} - \frac{1}{\SI{5.8951}{x10^{-7}m}}\right) = \SI{1.930}{x10^{-3}\electronvolt}
     \end{split}
 \end{equation}
-
 We can then calculate the magnetic field seen by the electron. That is,
 
 \begin{equation}
@@ -135,39 +134,46 @@ We can then calculate the magnetic field seen by the electron. That is,
     \end{split}
 \end{equation}
 
-In this case, we notice that the magnetic field generated is 16.64T which is much larger than that of a magnetic resonance imaging machine which is around $\SI{1}{T}$
+In this case, we notice that the magnetic field generated is 16.64T which is much stronger than that of a magnetic resonance imaging (MRI) machine which is around $\SI{1}{T}$.
 
 \section{Measuring the Spectrum of Hydrogen}
-Now we consider the spectra produced by a hydrogen atom. Using the angles created from the colored bands to the central bright maximum, we can then calculate the wavelength of the light from Equation (2) and obtain a percent error between the experimental and theoretical values. We can calculate the percent error between the two wavelengths such that
+Now we consider the spectra produced by a hydrogen atom. Using the angles measured from the colored bands to the central bright maximum, we can calculate the wavelength of the light using Equation (2) and then obtain a percent error between the experimental and theoretical values. We can calculate the percent error between the two wavelengths such that
 
 \begin{equation}
     \begin{split}
         \text{\% error} &= \left( \frac{\lambda_{exp} - \lambda_{theory}}{\lambda_{theory}} \right) 100 \\
     \end{split}
 \end{equation}
-Below we put into a table the results from the hydrogen spectra.
+Below we put into a table the results collected from the experiment conducted on the hydrogen atom.
 
 \setlength{\tabcolsep}{1pt}
 \renewcommand{\arraystretch}{1.25}
 
 \begin{figure}[H]
     \begin{center}
-        \begin{tabular}{ P{3.5cm} P{3.5cm} P{3.5cm} P{3.5cm} }
+        \begin{tabular}{ P{3.5cm} P{3.5cm} P{3.5cm} P{3.5cm} P{3.5cm} }
             \hline
-            \multicolumn{4}{c}{Table 1: Hydrogen wavelength results for $m=1$} \\
+            \multicolumn{5}{c}{Table 1: Hydrogen wavelength results for $m=1$}                                                      \\
 
             \hline
-                color & Angle $\theta$ [deg] & Wavelength $\lambda$ [nm] & $\%$ error \\
+            Color        & Angle $\theta$ [deg] & $\lambda_{exp}$ [nm] & $\lambda_{theory}$ [nm] & $\%$ error \\
             \hline
-            Red &  23.10  & 654.025 &  0.346  \\
-            Aqua & 16.95  & 485.992 & 0.022  \\
-            Blue & 15.09   & 433.980  & 0.004  \\
-            Violet & 14.24  & 410.056 & 0.035   \\
-            Ultra Violet & 13.77 & 396.787 & 0.054  \\
+            Red          & 23.10                & 654.025                         & 656.3                              & 0.346      \\
+            Aqua         & 16.95                & 485.992                         & 486.1                              & 0.022      \\
+            Blue         & 15.09                & 433.980                         & 434.0                              & 0.004      \\
+            Violet       & 14.24                & 410.056                         & 410.2                              & 0.035      \\
+            Ultra Violet & 13.77                & 396.787                         & 397.0                              & 0.054      \\
 
             \hline
         \end{tabular}
     \end{center}
 \end{figure}
+
+In this case, we see that the percent error is within 1\% of the theoretical values.
+
+\pagebreak
+
+\section{Conclusion}
+From this lab, we get that the light emitted from sodium and hydrogen produces spectral lines when incident on a diffraction grating. Thus, we can calculate the wavelength of the light emitted by the elements by considering the formulas associated with diffraction grating. We found that the wavelengths obtained from the experiment were within 1\% error of the theoretical values which indicate that the experiment was a success. The biggest takeaway of the lab is gaining a better understanding of how we can use methods like diffraction grating to measure light, even at an atomic scale.
 
 \end{document}
