@@ -13,6 +13,7 @@
 \usepackage{amsmath}
 \usepackage{enumitem}
 \usepackage{textcomp}
+\usepackage{hyperref}
 
 \usepackage[font=small,labelfont=bf]{caption}
 \usepackage[nodisplayskipstretch]{setspace}
@@ -300,5 +301,33 @@ From this, we build Thévenin's Circuit such that
         \caption { Thévenin's Circuit with load resistor $R_L$}
     \end{center}
 \end{figure}
+
+To validate Thévenin's Theorem, we test various resistances across $R_L$ and compare them to the values obtained in Table (1) using the original circuit shown in Figure (1). 
+
+\pagebreak
+
+For example, testing $R_L = 56\Omega$ for Thévenin's circuit, we can use Ohm's Law to get that
+
+\begin{equation}
+    \begin{split}
+        i_{s} &= \frac{v_{oc}}{R_{eq}} = \frac{1.5}{500 + 56} = \SI{2.6978}{mA} \\
+        v_{L} &= \left(\frac{R_L}{R_L + 500}\right)v_{oc} = \left(\frac{56}{56 + 500}\right)(1.5) = \SI{151.079}{mV}
+    \end{split}
+\end{equation}
+
+From Table (1) for $R_L = 56\Omega$, we see that Thévenin's equivalent circuit produces the same electrical quantities as the original circuit which proves Thévenin's Theorem experimentally. One interesting difference would be that the current through the voltage source would act differently than the current through the voltage source in the original circuit. This is because as $R_L$ becomes very large, and begins to act like an open circuit, no current would flow in Thévenin's circuit. However, in the original circuit, there are other branches for the current to flow through, thus current never approaches zero. In any case, this does not affect the validity of Thévenin's theorem. We can conclude that the graphs and data across the resistor $R_L$ obtained from the original circuit would apply to Thévenin's circuit load $R_L$. Lastly, in analyzing the power data and graph, we note that when $R_L = 500\Omega$, the power is at a maximum which is the same as $R_{th}$ as calculated in Equation (2). This proves the maximum power transfer theorem, which states that the power across the resistor $R_L$ is at a maximum when $R_L = R_{th}$. Thus, the experimental data agrees with theory.
+
+\section{Conclusion}
+From this lab, we gain a better understanding of the behavior of various electrical quantities across a resistor as the resistance changes. Furthermore, we confirm that values obtained from software are within a very small percent error with respect to the theoretical values which indicates that the software is sufficiently accurate. Additionally, we confirm the validity of Thévenin's Theorem by comparing the values produced by the original circuit and Thévenin's equivalent circuit.
+
+\pagebreak
+
+\section{CircuitLab Reference}
+Below are the links to the circuits created for this lab in CircuitLab.
+
+\begin{itemize}
+    \item Original Circuit: \url{https://www.circuitlab.com/editor/#?id=gsme39a23q99}
+    \item Thévenin's Circuit: \url{https://www.circuitlab.com/editor/#?id=z6wa4dha4een}
+  \end{itemize}
 
 \end{document}
